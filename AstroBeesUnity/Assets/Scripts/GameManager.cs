@@ -156,21 +156,21 @@ public class GameManager : MonoBehaviour
         {
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "C";
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "C";
-            flower.GetComponent<FlowerBehaviour>().color = 1;
+            flower.GetComponent<FlowerBehaviour>().colorTraits = 1;
         }
 
-        else if (trait == 2) // one big one small
+        else if (trait == 2) // two small
         {
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "C";
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "c";
-            flower.GetComponent<FlowerBehaviour>().color = 2;
+            flower.GetComponent<FlowerBehaviour>().colorTraits = 2;
         }
 
-        else if (trait == 3) // two small
+        else if (trait == 3) //one big one small 
         {
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "c";
             //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "c";
-            flower.GetComponent<FlowerBehaviour>().color = 2;
+            flower.GetComponent<FlowerBehaviour>().colorTraits = 3;
         }
         rand.Reset();
 
@@ -180,20 +180,17 @@ public class GameManager : MonoBehaviour
 
         if (trait == 1) // two big
         {
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 0] = "S";
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 1] = "S";
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 1;
         }
 
         else if (trait == 2) // one big one small
         {
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 0] = "S";
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 1] = "s";
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 2;
         }
 
         else if (trait == 3) // two small
         {
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 0] = "s";
-            flower.GetComponent<FlowerBehaviour>().stemTraits[0, 1] = "s";
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 3;
         }
         rand.Reset();
 
@@ -203,20 +200,17 @@ public class GameManager : MonoBehaviour
 
         if (trait == 1) // two big
         {
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 0] = "P";
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 1] = "P";
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 1;
         }
 
         else if (trait == 2) // one big one small
         {
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 0] = "P";
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 1] = "p";
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 2;
         }
 
         else if (trait == 3) // two small
         {
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 0] = "p";
-            flower.GetComponent<FlowerBehaviour>().petalTraits[0, 1] = "p";
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 3;
         }
         rand.Reset();
 
@@ -226,20 +220,17 @@ public class GameManager : MonoBehaviour
 
         if (trait == 1) // two big
         {
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 0] = "T";
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 1] = "T";
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 1;
         }
 
         else if (trait == 2) // one big one small
         {
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 0] = "T";
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 1] = "t";
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 2;
         }
 
         else if (trait == 3) // two small
         {
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 0] = "t";
-            flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 1] = "t";
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 3;
         }
         rand.Reset();
         StartCoroutine("WaitTime");
