@@ -26,123 +26,103 @@ public class PotBehaviour : MonoBehaviour
     {
         if (potNum == 1)
         {
-            GameManager.MyRandom rand = new GameManager.MyRandom();
-            int trait;
+            int rand;
 
             //find more efficent way of assigning random traits
             //COLOR
-            trait = rand.Next(1, 4);
+            rand = Random.Range(1, 4);
 
-            //if (trait == 1) // two big
-            //{
-            //    prevColor[0, 0] = "C";
-            //    prevColor[0, 1] = "C";
-            //}
+            if (rand == 1) // two big
+            {
+                prevColor = 1;
+            }
 
-            //else if (trait == 2) // one big one small
-            //{
-            //    prevColor[0, 0] = "C";
-            //    prevColor[0, 1] = "c";
-            //}
+            else if (rand == 2) // two small
+            {
+                prevColor = 2;
+            }
 
-            //else if (trait == 3) // two small
-            //{
-            //    prevColor[0, 0] = "c";
-            //    prevColor[0, 1] = "c";
-            //}
-            //rand.Reset();
+            else if (rand == 3) // one big one small 
+            {
+                prevColor = 3;
+            }
 
 
-            ////STEM
-            //trait = rand.Next(1, 4);
+            //STEM
+            rand = Random.Range(1, 4);
 
-            //if (trait == 1) // two big
-            //{
-            //    prevStem[0, 0] = "S";
-            //    prevStem[0, 1] = "S";
-            //}
+            if (rand == 1) // two big
+            {
+                prevStem = 1;
+            }
 
-            //else if (trait == 2) // one big one small
-            //{
-            //    prevStem[0, 0] = "S";
-            //    prevStem[0, 1] = "s";
-            //}
+            else if (rand == 2) // two small
+            {
+                prevStem = 2;
+            }
 
-            //else if (trait == 3) // two small
-            //{
-            //    prevStem[0, 0] = "s";
-            //    prevStem[0, 1] = "s";
-            //}
-            //rand.Reset();
+            else if (rand == 3) // one big one small 
+            {
+                prevStem = 3;
+            }
 
 
-            ////PETAL
-            //trait = rand.Next(1, 4);
+            //PETAL
+            rand = Random.Range(1, 4);
 
-            //if (trait == 1) // two big
-            //{
-            //    prevPetal[0, 0] = "P";
-            //    prevPetal[0, 1] = "P";
-            //}
+            if (rand == 1) // two big
+            {
+                prevPetal = 1;
+            }
 
-            //else if (trait == 2) // one big one small
-            //{
-            //    prevPetal[0, 0] = "P";
-            //    prevPetal[0, 1] = "p";
-            //}
+            else if (rand == 2) // two small
+            {
+                prevPetal = 2;
+            }
 
-            //else if (trait == 3) // two small
-            //{
-            //    prevPetal[0, 0] = "p";
-            //    prevPetal[0, 1] = "p";
-            //}
-            //rand.Reset();
+            else if (rand == 3) // one big one small 
+            {
+                prevPetal = 3;
+            }
 
 
-            ////THORNS
-            //trait = rand.Next(1, 4);
+            //THORNS
+            rand = Random.Range(1, 4);
 
-            //if (trait == 1) // two big
-            //{
-            //    prevThorns[0, 0] = "T";
-            //    prevThorns[0, 1] = "T";
-            //}
+            if (rand == 1) // two big
+            {
+                prevThorns = 1;
+            }
 
-            //else if (trait == 2) // one big one small
-            //{
-            //    prevThorns[0, 0] = "T";
-            //    prevThorns[0, 1] = "t";
-            //}
+            else if (rand == 2) // two small
+            {
+                prevThorns = 2;
+            }
 
-            //else if (trait == 3) // two small
-            //{
-            //    prevThorns[0, 0] = "t";
-            //    prevThorns[0, 1] = "t";
-            //}
+            else if (rand == 3) // one big one small 
+            {
+                prevThorns = 3;
+            }
 
-            //GameObject flower = Instantiate(flowerPrefab, transform);
-            //flower.transform.localPosition = Vector3.zero;
-            
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0,0] = prevColor[0, 0];
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = prevColor[0, 1];
-            //flower.GetComponent<FlowerBehaviour>().stemTraits[0, 0] = prevStem[0, 0];
-            //flower.GetComponent<FlowerBehaviour>().stemTraits[0, 1] = prevStem[0, 1];
-            //flower.GetComponent<FlowerBehaviour>().petalTraits[0, 0] = prevPetal[0, 0];
-            //flower.GetComponent<FlowerBehaviour>().petalTraits[0, 1] = prevPetal[0, 1];
-            //flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 0] = prevThorns[0, 0];
-            //flower.GetComponent<FlowerBehaviour>().thornsTraits[0, 1] = prevThorns[0, 1];
+            GameObject flower = Instantiate(flowerPrefab, transform);
+            flower.transform.localPosition = Vector3.zero;
+
+            flower.GetComponent<FlowerBehaviour>().colorTraits = prevColor;
+            flower.GetComponent<FlowerBehaviour>().stemTraits = prevStem;
+            flower.GetComponent<FlowerBehaviour>().petalTraits = prevPetal;
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = prevThorns;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartSquare()
     {
-        
+
         int color = gameObject.GetComponent<Punnett>().RunSquare(prevColor, colorTraits);
         int stem = gameObject.GetComponent<Punnett>().RunSquare(prevStem, stemTraits);
         int thorns = gameObject.GetComponent<Punnett>().RunSquare(prevThorns, thornsTraits);

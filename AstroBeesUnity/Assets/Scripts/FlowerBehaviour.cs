@@ -24,10 +24,10 @@ public class FlowerBehaviour : MonoBehaviour
         {
             ccUpdate = true;
 
-            cc.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = colorTraits[0, 0] + colorTraits[0, 1];
-            cc.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = stemTraits[0, 0] + stemTraits[0, 1];
-            cc.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = petalTraits[0, 0] + petalTraits[0, 1];
-            cc.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = thornsTraits[0, 0] + thornsTraits[0, 1];
+            //cc.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = colorTraits[0, 0] + colorTraits[0, 1];
+            //cc.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = stemTraits[0, 0] + stemTraits[0, 1];
+            //cc.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = petalTraits[0, 0] + petalTraits[0, 1];
+            //cc.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = thornsTraits[0, 0] + thornsTraits[0, 1];
         }
     }
 
