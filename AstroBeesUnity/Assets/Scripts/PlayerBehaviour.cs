@@ -12,10 +12,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
-    public string[,] colorTraits = new string[1, 2];
-    public string[,] stemTraits = new string[1, 2];
-    public string[,] petalTraits = new string[1, 2];
-    public string[,] thornsTraits = new string[1, 2];
+    public int colorTraits;
+    public int stemTraits;
+    public int petalTraits;
+    public int thornsTraits;
 
     private bool onFlower = false;
     private GameObject flower;
@@ -74,7 +74,6 @@ public class PlayerBehaviour : MonoBehaviour
             stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
             petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
             thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
-            Debug.Log(thornsTraits[0,0]);
         }
     }
 
@@ -86,7 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
             pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
             pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
             pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
-            pot.GetComponent<PotBehaviour>().PunnettSquare();
+            pot.GetComponent<PotBehaviour>().StartSquare();
         }
     }
 
