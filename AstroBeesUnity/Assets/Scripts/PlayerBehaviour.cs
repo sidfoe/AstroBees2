@@ -23,7 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
     private bool onPot = false;
     private GameObject pot;
 
-    public float speed = 1.5f;
+    public float speed;
     private Vector3 target;
 
     void Start()
@@ -60,9 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
         }
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime * 2);
-        //horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-       // vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     void GrabGenes()
