@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float speed;
     private Vector3 target;
 
+    public GameObject grabGenesOption;
+
     void Start()
     {
         target = transform.position;
@@ -36,8 +39,8 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         Movement();
-        GrabGenes();
         GiveGenes();
+        OpenGeneOption();
     }
 
     void FixedUpdate()
@@ -63,18 +66,29 @@ public class PlayerBehaviour : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    void GrabGenes()
+    public void GrabGenes()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
-        {
-
-            colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
-            stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
-            petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
-            thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
-        }
+        colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
+        stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
+        petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
+        thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        flower.GetComponent<FlowerBehaviour>().GenesGrabbed();
     }
 
+    public void CloseGeneOption()
+    {
+        grabGenesOption.SetActive(false);
+    }
+    void OpenGeneOption()
+    {
+         if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
+         {
+             Vector3 offset = new Vector3(0, -1.75f);
+             Vector3 menuPos = flower.transform.position + offset;
+             grabGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+             grabGenesOption.SetActive(true);
+         }
+    }
     void GiveGenes()
     {
         if (Input.GetKeyDown(KeyCode.Space) && onPot == true)

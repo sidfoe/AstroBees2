@@ -40,4 +40,9 @@ public class FlowerBehaviour : MonoBehaviour
     {
         cc.SetActive(false);
     }
+    public void GenesGrabbed()
+    {
+        Vector3 chosenSize = new Vector3(1.5f, 1.5f);
+        transform.localScale = chosenSize;
+    }
 }
