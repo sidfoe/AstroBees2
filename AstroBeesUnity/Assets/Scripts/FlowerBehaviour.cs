@@ -40,4 +40,15 @@ public class FlowerBehaviour : MonoBehaviour
     {
         cc.SetActive(false);
     }
+    public void Grow()
+    {
+        Vector3 newSize = new Vector3(1.5f, 1.5f);
+        transform.localScale = newSize;
+    }
+
+    public void Shrink()
+    {
+        Vector3 newSize = new Vector3(1, 1);
+        transform.localScale = newSize;
+    }
 }

@@ -204,6 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39dd65a816b3d3489fb54268992723a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorTraits: 0
+  stemTraits: 0
+  petalTraits: 0
+  thornsTraits: 0
 --- !u!1 &3997443091696005816
 GameObject:
   m_ObjectHideFlags: 0
