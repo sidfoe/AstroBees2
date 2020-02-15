@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6231822343395551644}
   - component: {fileID: 5449308412210910004}
   - component: {fileID: 7165138219258462315}
-  - component: {fileID: 6557432751648030250}
   m_Layer: 0
   m_Name: Pot
   m_TagString: pot
@@ -124,15 +123,11 @@ MonoBehaviour:
   potNum: 0
   nextPot: {fileID: 0}
   flowerPrefab: {fileID: 0}
---- !u!114 &6557432751648030250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5761457777269846509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b6f4e416d02837409dcfdb7aeeec1d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  colorTraits: 0
+  stemTraits: 0
+  petalTraits: 0
+  thornsTraits: 0
+  prevColor: 0
+  prevStem: 0
+  prevPetal: 0
+  prevThorns: 0
