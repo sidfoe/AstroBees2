@@ -107,7 +107,7 @@ public class PotBehaviour : MonoBehaviour
                 prevThorns = 3;
             }
 
-            GameObject flower = Instantiate(flowerPrefab, transform);
+            GameObject flower = Instantiate(flowerPrefab, nextPot.transform);
             flower.transform.localPosition = Vector3.zero;
 
             flower.GetComponent<FlowerBehaviour>().colorTraits = prevColor;
@@ -125,7 +125,6 @@ public class PotBehaviour : MonoBehaviour
 
     public void StartSquare()
     {
-
         int color = gameObject.GetComponent<Punnett>().RunSquare(prevColor, colorTraits);
         int stem = gameObject.GetComponent<Punnett>().RunSquare(prevStem, stemTraits);
         int thorns = gameObject.GetComponent<Punnett>().RunSquare(prevThorns, thornsTraits);
@@ -134,9 +133,16 @@ public class PotBehaviour : MonoBehaviour
         GameObject flower = Instantiate(flowerPrefab, transform);
         flower.transform.localPosition = Vector3.zero;
 
-        //flower.GetComponent<FlowerBehaviour>.
+        flower.GetComponent<FlowerBehaviour>().colorTraits = color;
+        flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
+        flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
+        flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
     }
 }
+
+
+
+
 
 
 //public void PunnettSquare()

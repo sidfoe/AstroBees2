@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //finds the punnentt gameobject that holds the punnett script that calculates the punnett square
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         FlowerSpawning();
     }
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Function that generates the target flower and spawns it on the first pot
     void GenerateTargetFlower()
     {
         int trait;
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
         rand.Reset();
     }
 
+    //Spawns the flowers in the outside envioronment
     void FlowerSpawning()
     {
         int[] numCheck = new int[numFlowers]; //numFlowers is the amount of flowers that should be spawned
@@ -141,22 +144,16 @@ public class GameManager : MonoBehaviour
 
         if (trait == 1) // two big
         {
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "C";
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "C";
             flower.GetComponent<FlowerBehaviour>().colorTraits = 1;
         }
 
         else if (trait == 2) // two small
         {
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "C";
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "c";
             flower.GetComponent<FlowerBehaviour>().colorTraits = 2;
         }
 
         else if (trait == 3) //one big one small 
         {
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 0] = "c";
-            //flower.GetComponent<FlowerBehaviour>().colorTraits[0, 1] = "c";
             flower.GetComponent<FlowerBehaviour>().colorTraits = 3;
         }
         rand.Reset();
@@ -228,6 +225,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
     }
 
+    //Random function that handles random but also allows for random numbers that are not the same
     public class MyRandom : System.Random
     {
         List<int> returnedNumbers = new List<int>();
