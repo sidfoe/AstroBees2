@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -12,19 +13,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
-    public string[,] colorTraits = new string[1, 2];
-    public string[,] stemTraits = new string[1, 2];
-    public string[,] petalTraits = new string[1, 2];
-    public string[,] thornsTraits = new string[1, 2];
+    public int colorTraits;
+    public int stemTraits;
+    public int petalTraits;
+    public int thornsTraits;
 
     private bool onFlower = false;
     private GameObject flower;
+    private GameObject lastFlower;
 
     private bool onPot = false;
     private GameObject pot;
 
-    public float speed = 1.5f;
+    public float speed;
     private Vector3 target;
+
+    public GameObject grabGenesOption;
 
     void Start()
     {
@@ -36,8 +40,8 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         Movement();
-        GrabGenes();
         GiveGenes();
+        OpenGeneOption();
     }
 
     void FixedUpdate()
@@ -55,29 +59,44 @@ public class PlayerBehaviour : MonoBehaviour
     void Movement()
     {
         
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
         }
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime * 2);
-        //horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-       // vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    void GrabGenes()
+    public void GrabGenes()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
+        colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
+        stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
+        petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
+        thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        flower.GetComponent<FlowerBehaviour>().Grow();
+        Time.timeScale = 1;
+        if (lastFlower != null && lastFlower != flower)
         {
-
-            colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
-            stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
-            petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
-            thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
-            Debug.Log(thornsTraits[0,0]);
+            lastFlower.GetComponent<FlowerBehaviour>().Shrink();
         }
     }
 
+    public void CloseGeneOption()
+    {
+        grabGenesOption.SetActive(false);
+        Time.timeScale = 1;
+    }
+    void OpenGeneOption()
+    {
+         if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
+         {
+             Vector3 offset = new Vector3(0, -1.75f);
+             Vector3 menuPos = flower.transform.position + offset;
+             grabGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+             grabGenesOption.SetActive(true);
+             Time.timeScale = 0;
+         }
+    }
     void GiveGenes()
     {
         if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
@@ -86,7 +105,7 @@ public class PlayerBehaviour : MonoBehaviour
             pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
             pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
             pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
-            pot.GetComponent<PotBehaviour>().PunnettSquare();
+            pot.GetComponent<PotBehaviour>().StartSquare();
         }
     }
 
@@ -110,11 +129,13 @@ public class PlayerBehaviour : MonoBehaviour
         if (col.gameObject.CompareTag("flower"))
         {
             onFlower = false;
+            lastFlower = flower;
         }
 
         if (col.gameObject.CompareTag("pot"))
         {
             onPot = false;
+            lastFlower = flower;
         }
     }
 }

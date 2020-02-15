@@ -494,6 +494,10 @@ MonoBehaviour:
   numFlowers: 4
   flowerPrefab: {fileID: 2869772296295707310, guid: 5df07accd973c5b4ebfb168ab52760cc,
     type: 3}
+  colorTarget: 0
+  stemTarget: 0
+  petalTarget: 0
+  thornsTarget: 0
 --- !u!4 &534862410
 Transform:
   m_ObjectHideFlags: 0
@@ -1243,6 +1247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 10
+  colorTraits: 0
+  stemTraits: 0
+  petalTraits: 0
+  thornsTraits: 0
+  speed: 1.5
 --- !u!61 &1992171147
 BoxCollider2D:
   m_ObjectHideFlags: 0
