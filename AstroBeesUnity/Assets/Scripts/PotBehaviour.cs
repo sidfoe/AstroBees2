@@ -20,10 +20,13 @@ public class PotBehaviour : MonoBehaviour
     public int prevPetal;
     public int prevThorns;
 
+    private Punnett square;
 
     // Start is called before the first frame update
     void Start()
     {
+        square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
+
         if (potNum == 1)
         {
             int rand;

@@ -7,7 +7,7 @@ public class Punnett : MonoBehaviour
     // 1 = two big
     //2 = two small
     //3 = one big one small
-    public int RunSquare(int one, int two)
+    public int RunSquare(int one, int two) //runs punnett square with two pairs of triats
     {
         int result = 0;
 
