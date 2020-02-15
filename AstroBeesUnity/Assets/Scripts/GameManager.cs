@@ -10,16 +10,19 @@ public class GameManager : MonoBehaviour
     public int numFlowers = 4; //amount of flowers to spawn
     public GameObject flowerPrefab;
 
-    public string[,] colorTarget = new string[1, 2];
-    public string[,] stemTarget = new string[1, 2];
-    public string[,] petalTarget = new string[1, 2];
-    public string[,] thornsTarget = new string[1, 2];
+    //target flower traits
+    public int colorTarget;
+    public int stemTarget;
+    public int petalTarget;
+    public int thornsTarget;
 
     MyRandom rand = new MyRandom();
+    private Punnett square;
 
     // Start is called before the first frame update
     void Start()
     {
+        square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         FlowerSpawning();
     }
 
@@ -31,99 +34,83 @@ public class GameManager : MonoBehaviour
 
     void GenerateTargetFlower()
     {
-        //MyRandom rand = new MyRandom();
         int trait;
+        MyRandom rand = new MyRandom();
 
         //find more efficent way of assigning random traits
         //COLOR
-        rand.Reset();
         trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
-            colorTarget[0, 0] = "C";
-            colorTarget[0, 1] = "C";
+            colorTarget = 1;
         }
 
-        else if (trait == 2) // one big one small
+        else if (trait == 2) // two small
         {
-            colorTarget[0, 0] = "C";
-            colorTarget[0, 1] = "c";
+            colorTarget = 2;
         }
 
-        else if (trait == 3) // two small
+        else if (trait == 3) // one big one small 
         {
-            colorTarget[0, 0] = "c";
-            colorTarget[0, 1] = "c";
+            colorTarget = 3;
         }
         rand.Reset();
-
 
         //STEM
         trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
-            stemTarget[0, 0] = "S";
-            stemTarget[0, 1] = "S";
+            stemTarget = 1;
         }
 
-        else if (trait == 2) // one big one small
+        else if (trait == 2) // two small
         {
-            stemTarget[0, 0] = "S";
-            stemTarget[0, 1] = "s";
+            stemTarget = 2;
         }
 
-        else if (trait == 3) // two small
+        else if (trait == 3) // one big one small 
         {
-            stemTarget[0, 0] = "s";
-            stemTarget[0, 1] = "s";
+            stemTarget = 3;
         }
         rand.Reset();
-
 
         //PETAL
         trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
-            petalTarget[0, 0] = "P";
-            petalTarget[0, 1] = "P";
+            petalTarget = 1;
         }
 
-        else if (trait == 2) // one big one small
+        else if (trait == 2) // two small
         {
-            petalTarget[0, 0] = "P";
-            petalTarget[0, 1] = "p";
+            petalTarget = 2;
         }
 
-        else if (trait == 3) // two small
+        else if (trait == 3) // one big one small 
         {
-            petalTarget[0, 0] = "p";
-            petalTarget[0, 1] = "p";
+            petalTarget = 3;
         }
         rand.Reset();
-
 
         //THORNS
         trait = rand.Next(1, 4);
 
         if (trait == 1) // two big
         {
-            thornsTarget[0, 0] = "T";
-            thornsTarget[0, 1] = "T";
+            thornsTarget = 1;
         }
 
-        else if (trait == 2) // one big one small
+        else if (trait == 2) // two small
         {
-            thornsTarget[0, 0] = "T";
-            thornsTarget[0, 1] = "t";
+            thornsTarget = 2;
         }
 
-        else if (trait == 3) // two small
+        else if (trait == 3) // one big one small 
         {
-            thornsTarget[0, 0] = "t";
-            thornsTarget[0, 1] = "t";
+            thornsTarget = 3;
         }
         rand.Reset();
     }
