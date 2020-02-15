@@ -28,6 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float speed;
     private Vector3 target;
 
+    private bool canOpen = true;
     public GameObject grabGenesOption;
 
     void Start()
@@ -58,8 +59,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Movement()
     {
-        
-        if(Input.GetMouseButtonDown(0) && Time.timeScale != 0)
+        if (Input.GetMouseButtonDown(0) && !grabGenesOption.activeInHierarchy)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
@@ -73,29 +73,22 @@ public class PlayerBehaviour : MonoBehaviour
         stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
         petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
         thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
-        flower.GetComponent<FlowerBehaviour>().Grow();
-        Time.timeScale = 1;
-        if (lastFlower != null && lastFlower != flower)
-        {
-            lastFlower.GetComponent<FlowerBehaviour>().Shrink();
-        }
     }
 
     public void CloseGeneOption()
     {
         grabGenesOption.SetActive(false);
-        Time.timeScale = 1;
+        canOpen = false;
     }
     void OpenGeneOption()
     {
-         if (Input.GetKeyDown(KeyCode.Space) && onFlower == true)
-         {
-             Vector3 offset = new Vector3(0, -1.75f);
-             Vector3 menuPos = flower.transform.position + offset;
-             grabGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
-             grabGenesOption.SetActive(true);
-             Time.timeScale = 0;
-         }
+        if (onFlower == true && grabGenesOption.activeInHierarchy == false && canOpen)
+        {
+            Vector3 offset = new Vector3(0, -2.1f);
+            Vector3 menuPos = flower.transform.position + offset;
+            grabGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+            grabGenesOption.SetActive(true);
+        }
     }
     void GiveGenes()
     {
@@ -113,8 +106,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (col.gameObject.CompareTag("flower"))
         {
+            canOpen = true;
             onFlower = true;
             flower = col.gameObject;
+            flower.GetComponent<FlowerBehaviour>().Grow();
         }
 
         if (col.gameObject.CompareTag("pot"))
@@ -130,6 +125,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             onFlower = false;
             lastFlower = flower;
+            lastFlower.GetComponent<FlowerBehaviour>().Shrink();
         }
 
         if (col.gameObject.CompareTag("pot"))
@@ -137,5 +133,11 @@ public class PlayerBehaviour : MonoBehaviour
             onPot = false;
             lastFlower = flower;
         }
+
+        if (col.gameObject == flower)
+        {
+            canOpen = true;
+        }
     }
+
 }

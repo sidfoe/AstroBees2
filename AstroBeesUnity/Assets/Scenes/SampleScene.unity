@@ -1251,8 +1251,8 @@ MonoBehaviour:
   stemTraits: 0
   petalTraits: 0
   thornsTraits: 0
-  speed: 1.5
-  grabGenesOption: {fileID: 0}
+  speed: 3
+  grabGenesOption: {fileID: 3350145863370205770}
 --- !u!61 &1992171147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1992171146}
         m_MethodName: CloseGeneOption
         m_Mode: 1
         m_Arguments:
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1992171146}
         m_MethodName: GrabGenes
         m_Mode: 1
         m_Arguments:
@@ -2074,7 +2074,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1992171146}
         m_MethodName: CloseGeneOption
         m_Mode: 1
         m_Arguments:
