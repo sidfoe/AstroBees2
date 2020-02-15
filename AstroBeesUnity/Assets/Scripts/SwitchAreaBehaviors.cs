@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class StartButtonBehaviors : MonoBehaviour
+public class SwitchAreaBehaviors : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,12 +15,8 @@ public class StartButtonBehaviors : MonoBehaviour
     {
         
     }
-    void OnMouseDown()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Invoke("NextScene", 0.15f);
+        Debug.Log("Switch Scene");
     }
-    void NextScene()
-	{
-        SceneManager.LoadScene("IntroCutscene");
-	}
 }
