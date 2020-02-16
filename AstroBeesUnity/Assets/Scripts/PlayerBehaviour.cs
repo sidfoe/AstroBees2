@@ -31,6 +31,8 @@ public class PlayerBehaviour : MonoBehaviour
     private bool canOpen = true;
     public GameObject grabGenesOption;
 
+    private int currentArea;
+
     void Start()
     {
         target = transform.position;
@@ -117,6 +119,26 @@ public class PlayerBehaviour : MonoBehaviour
             onPot = true;
             pot = col.gameObject;
         }
+
+        if(col.gameObject.name == "SwitchAreaButton")
+        {
+            Vector3 cameraPosChange = new Vector3(18.1f, 0);
+            Vector3 playerPosChange = new Vector3(4, 0);
+            currentArea++;
+            if (currentArea % 2 == 1) 
+            {
+                // Goes to ship
+                Camera.main.transform.position += cameraPosChange;
+                transform.position += playerPosChange;
+            }
+            else
+            {
+                // Goes to planet
+                Camera.main.transform.position -= cameraPosChange;
+                transform.position -= playerPosChange;
+            }
+            CancelMovement();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -138,6 +160,11 @@ public class PlayerBehaviour : MonoBehaviour
         {
             canOpen = true;
         }
+    }
+    
+    void CancelMovement()
+    {
+        target = transform.position;
     }
 
 }
