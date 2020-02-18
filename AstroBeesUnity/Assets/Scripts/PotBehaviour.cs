@@ -107,7 +107,7 @@ public class PotBehaviour : MonoBehaviour
                 prevThorns = 3;
             }
 
-            GameObject flower = Instantiate(flowerPrefab, nextPot.transform);
+            GameObject flower = Instantiate(flowerPrefab, transform);
             flower.transform.localPosition = Vector3.zero;
 
             flower.GetComponent<FlowerBehaviour>().colorTraits = prevColor;
