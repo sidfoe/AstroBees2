@@ -52,4 +52,9 @@ public class FlowerBehaviour : MonoBehaviour
         Vector3 newSize = new Vector3(1, 1);
         transform.localScale = newSize;
     }
+
+    public void SpawnedInPot()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
 }
