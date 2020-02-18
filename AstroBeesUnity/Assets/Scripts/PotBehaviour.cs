@@ -125,12 +125,12 @@ public class PotBehaviour : MonoBehaviour
 
     public void StartSquare()
     {
-        int color = gameObject.GetComponent<Punnett>().RunSquare(prevColor, colorTraits);
-        int stem = gameObject.GetComponent<Punnett>().RunSquare(prevStem, stemTraits);
-        int thorns = gameObject.GetComponent<Punnett>().RunSquare(prevThorns, thornsTraits);
-        int petal = gameObject.GetComponent<Punnett>().RunSquare(prevPetal, petalTraits);
+        int color = square.RunSquare(prevColor, colorTraits);
+        int stem = square.RunSquare(prevStem, stemTraits);
+        int thorns = square.RunSquare(prevThorns, thornsTraits);
+        int petal = square.RunSquare(prevPetal, petalTraits);
 
-        GameObject flower = Instantiate(flowerPrefab, transform);
+        GameObject flower = Instantiate(flowerPrefab, nextPot.transform);
         flower.transform.localPosition = Vector3.zero;
 
         flower.GetComponent<FlowerBehaviour>().colorTraits = color;

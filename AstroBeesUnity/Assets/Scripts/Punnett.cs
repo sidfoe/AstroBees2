@@ -54,7 +54,7 @@ public class Punnett : MonoBehaviour
             }
         }
 
-        if ((one == 3 && two == 1) || (one == 1 && two == 3)) //two mixed pairs
+        if ((one == 3 && two == 3) || (one == 3 && two == 3)) //two mixed pairs
         {
             int rand = Random.Range(1, 5); //25% 1 50% 3 25% 2
 
