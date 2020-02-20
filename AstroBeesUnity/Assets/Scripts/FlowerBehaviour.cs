@@ -5,40 +5,30 @@ using UnityEngine;
 
 public class FlowerBehaviour : MonoBehaviour
 {
-    private GameObject cc; //canvas holding traits
-    private bool ccUpdate = false;
+    // 1 = two big
+    //2 = two small
+    //3 = one big one small
 
-    public int colorTraits;
-    public int stemTraits;
-    public int petalTraits;
+    public int colorTraits; //1 red 2 blue 3 purple
+    public int stemTraits; //1 & 3 thick 2 skinny
+    public int petalTraits; //1 & 3 
     public int thornsTraits;
+
+    public bool updateLook = false;
 
     private void Start()
     {
-        //cc = gameObject.transform.GetChild(0).gameObject;
+
     }
 
     private void LateUpdate()
     {
-        //if (ccUpdate == false)
-        //{
-        //    ccUpdate = true;
+        if(updateLook == false)
+        {
+            updateLook = true;
 
-        //    //cc.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = colorTraits[0, 0] + colorTraits[0, 1];
-        //    //cc.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = stemTraits[0, 0] + stemTraits[0, 1];
-        //    //cc.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = petalTraits[0, 0] + petalTraits[0, 1];
-        //    //cc.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = thornsTraits[0, 0] + thornsTraits[0, 1];
-        //}
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        //cc.SetActive(true);
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        //cc.SetActive(false);
+            
+        }
     }
 
     public void Grow()

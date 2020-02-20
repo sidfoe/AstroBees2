@@ -108,7 +108,7 @@ public class PotBehaviour : MonoBehaviour
             }
 
             GameObject flower = Instantiate(flowerPrefab, transform);
-            flower.transform.localPosition = Vector3.zero;
+            flower.transform.localPosition = new Vector3(0, 1.25f, 0);
 
             flower.GetComponent<FlowerBehaviour>().colorTraits = prevColor;
             flower.GetComponent<FlowerBehaviour>().stemTraits = prevStem;
@@ -131,7 +131,7 @@ public class PotBehaviour : MonoBehaviour
         int petal = square.RunSquare(prevPetal, petalTraits);
 
         GameObject flower = Instantiate(flowerPrefab, nextPot.transform);
-        flower.transform.localPosition = Vector3.zero;
+        flower.transform.localPosition = new Vector3(0, 1.25f, 0);
 
         flower.GetComponent<FlowerBehaviour>().colorTraits = color;
         flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
