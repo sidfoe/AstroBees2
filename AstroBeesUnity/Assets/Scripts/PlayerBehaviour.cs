@@ -116,18 +116,23 @@ public class PlayerBehaviour : MonoBehaviour
     }
     public void Breed()
     {
+        pot.GetComponent<PotBehaviour>().colorTraits = colorTraits;
+        pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
+        pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
+        pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
         pot.GetComponent<PotBehaviour>().StartSquare();
     }
+
     void GiveGenes()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
-        {
-            pot.GetComponent<PotBehaviour>().colorTraits = colorTraits;
-            pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
-            pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
-            pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
-            pot.GetComponent<PotBehaviour>().StartSquare();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
+        //{
+        //    pot.GetComponent<PotBehaviour>().colorTraits = colorTraits;
+        //    pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
+        //    pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
+        //    pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
+        //    pot.GetComponent<PotBehaviour>().StartSquare();
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D col)
