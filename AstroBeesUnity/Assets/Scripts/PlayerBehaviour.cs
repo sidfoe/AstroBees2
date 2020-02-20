@@ -31,6 +31,9 @@ public class PlayerBehaviour : MonoBehaviour
     private bool canOpen = true;
     public GameObject grabGenesOption;
 
+    private bool canOpenBreed = true;
+    public GameObject breedGenesOption;
+
     private int currentArea;
 
     void Start()
@@ -45,6 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
         Movement();
         GiveGenes();
         OpenGeneOption();
+        OpenBreedOption();
     }
 
     void FixedUpdate()
@@ -61,7 +65,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetMouseButtonDown(0) && !grabGenesOption.activeInHierarchy)
+        if (Input.GetMouseButtonDown(0) && !grabGenesOption.activeInHierarchy && !breedGenesOption.activeInHierarchy)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
@@ -92,6 +96,28 @@ public class PlayerBehaviour : MonoBehaviour
             grabGenesOption.SetActive(true);
         }
     }
+
+    public void CloseBreedOption()
+    {
+        breedGenesOption.SetActive(false);
+        canOpenBreed = false;
+    }
+
+    
+    void OpenBreedOption()
+    {
+        if (onPot == true && breedGenesOption.activeInHierarchy == false && canOpenBreed)
+        {
+            Vector3 offset = new Vector3(0, -2.1f);
+            Vector3 menuPos = pot.transform.position + offset;
+            breedGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+            breedGenesOption.SetActive(true);
+        }
+    }
+    public void Breed()
+    {
+        pot.GetComponent<PotBehaviour>().StartSquare();
+    }
     void GiveGenes()
     {
         if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
@@ -116,6 +142,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (col.gameObject.CompareTag("pot"))
         {
+            canOpenBreed = true;
             onPot = true;
             pot = col.gameObject;
         }

@@ -114,6 +114,8 @@ public class PotBehaviour : MonoBehaviour
             flower.GetComponent<FlowerBehaviour>().stemTraits = prevStem;
             flower.GetComponent<FlowerBehaviour>().petalTraits = prevPetal;
             flower.GetComponent<FlowerBehaviour>().thornsTraits = prevThorns;
+            flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
+
         }
     }
 
@@ -137,6 +139,7 @@ public class PotBehaviour : MonoBehaviour
         flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
         flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
         flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
+        flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
     }
 }
 
