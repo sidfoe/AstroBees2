@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,11 +20,17 @@ public class GameManager : MonoBehaviour
     MyRandom rand = new MyRandom();
     private Punnett square;
 
+    public GameObject targetFlowerPanel;
+    private Sprite tarFlower;
+
+    public GameObject winText;
+
     // Start is called before the first frame update
     void Start()
     {
         //finds the punnentt gameobject that holds the punnett script that calculates the punnett square
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
+        GenerateTargetFlower();
         FlowerSpawning();
     }
 
@@ -115,6 +122,23 @@ public class GameManager : MonoBehaviour
             thornsTarget = 3;
         }
         rand.Reset();
+
+        GameObject flower = Instantiate(flowerPrefab, targetFlowerPanel.transform);
+        flower.GetComponent<FlowerBehaviour>().isTarget = true;
+        flower.transform.localPosition = new Vector3(0, 1.25f, 0);
+
+        flower.GetComponent<FlowerBehaviour>().colorTraits = colorTarget;
+        flower.GetComponent<FlowerBehaviour>().stemTraits = stemTarget;
+        flower.GetComponent<FlowerBehaviour>().petalTraits = petalTarget;
+        flower.GetComponent<FlowerBehaviour>().thornsTraits = thornsTarget;
+    }
+
+    public void CheckFlowerMatch(FlowerBehaviour fb)
+    {
+        if(fb.colorTraits == colorTarget && fb.stemTraits == stemTarget && fb.petalTraits == petalTarget && fb.thornsTraits == thornsTarget)
+        {
+            winText.SetActive(true);
+        }
     }
 
     //Spawns the flowers in the outside envioronment

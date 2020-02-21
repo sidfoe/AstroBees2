@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlowerBehaviour : MonoBehaviour
 {
@@ -18,9 +19,17 @@ public class FlowerBehaviour : MonoBehaviour
 
     public Sprite[] arr;
 
+    public GameObject tar;
+    public bool isTarget = false;
+
+    private void Awake()
+    {
+        tar = GameObject.FindGameObjectWithTag("tarImg");
+    }
+
     private void Start()
     {
-
+        
     }
 
     private void LateUpdate()
@@ -244,6 +253,11 @@ public class FlowerBehaviour : MonoBehaviour
                 }
             }
         }
+
+        if(isTarget == true)
+        {
+            TargetFlowerImage();
+        }
     }
 
     public void Grow()
@@ -261,5 +275,15 @@ public class FlowerBehaviour : MonoBehaviour
     public void SpawnedInPot()
     {
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void TargetFlowerImage()
+    {
+        tar.GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+
+        if(colorTraits == 3)
+        {
+            tar.GetComponent<Image>().color = new Color(.4f, .2f, 1, 1);
+        }
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - flower
   - pot
   - punnett
+  - tarImg
   layers:
   - Default
   - TransparentFX
