@@ -8,6 +8,7 @@ TagManager:
   - pot
   - punnett
   - tarImg
+  - GameManager
   layers:
   - Default
   - TransparentFX

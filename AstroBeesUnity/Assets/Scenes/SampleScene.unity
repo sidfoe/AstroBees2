@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 534862409}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2466,7 +2466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062058089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.1011195, y: 0.4419192, z: 0}
+  m_LocalPosition: {x: 6.46, y: 3.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729221894}
@@ -4796,12 +4796,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760645d1055cb974fa1c580eda9bfdb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 15
+  runSpeed: 70
   colorTraits: 0
   stemTraits: 0
   petalTraits: 0
   thornsTraits: 0
-  speed: 3
+  speed: 7
   grabGenesOption: {fileID: 3350145863370205770}
   breedGenesOption: {fileID: 196539511}
 --- !u!61 &1992171147
@@ -4821,7 +4821,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.512, y: 0.512}
+    oldSize: {x: 0.45511112, y: 0.45511112}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
