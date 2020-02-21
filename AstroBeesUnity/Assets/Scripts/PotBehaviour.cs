@@ -21,11 +21,13 @@ public class PotBehaviour : MonoBehaviour
     public int prevThorns;
 
     private Punnett square;
+    private GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         if (potNum == 1)
         {
@@ -140,6 +142,12 @@ public class PotBehaviour : MonoBehaviour
         flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
         flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
         flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
+        nextPot.GetComponent<PotBehaviour>().prevColor = color;
+        nextPot.GetComponent<PotBehaviour>().prevStem = stem;
+        nextPot.GetComponent<PotBehaviour>().prevThorns = thorns;
+        nextPot.GetComponent<PotBehaviour>().prevPetal = petal;
+
+        gm.CheckFlowerMatch(flower.GetComponent<FlowerBehaviour>());
     }
 }
 
