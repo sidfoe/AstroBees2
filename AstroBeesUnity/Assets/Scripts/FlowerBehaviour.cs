@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class FlowerBehaviour : MonoBehaviour
 {
-    // 1 = two big
-    //2 = two small
-    //3 = one big one small
+    //1 = LL
+    //2 = MM
+    //3 = SS
+    //4 = LS
+    //5 = LM
+    //6 = MS
 
     public int colorTraits; //1 red 2 blue 3 purple
     public int stemTraits; //1 & 3 yes 2 no on the leaves
