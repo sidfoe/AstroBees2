@@ -147,7 +147,7 @@ public class PotBehaviour : MonoBehaviour
         nextPot.GetComponent<PotBehaviour>().prevThorns = thorns;
         nextPot.GetComponent<PotBehaviour>().prevPetal = petal;
 
-        gm.CheckFlowerMatch(flower.GetComponent<FlowerBehaviour>());
+        //gm.CheckFlowerMatch(flower.GetComponent<FlowerBehaviour>());
     }
 }
 
