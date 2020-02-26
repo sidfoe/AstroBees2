@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2096135485818133563
 Transform:
   m_ObjectHideFlags: 0
@@ -152,8 +152,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 128903619
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -208,6 +208,24 @@ MonoBehaviour:
   stemTraits: 0
   petalTraits: 0
   thornsTraits: 0
+  updateLook: 0
+  arr:
+  - {fileID: 21300000, guid: deffff27ff18ac84db04af6c31c7c5fc, type: 3}
+  - {fileID: 21300000, guid: c059ec11886199a49b77ea6bf91c5911, type: 3}
+  - {fileID: 21300000, guid: f66411e8ec3898b4ea3d77f26a7a5049, type: 3}
+  - {fileID: 21300000, guid: 0e400456c5a10374db9e68a365b0f903, type: 3}
+  - {fileID: 21300000, guid: e35b86252c6804c4885981afe54f05e8, type: 3}
+  - {fileID: 21300000, guid: b80d4b990face524cae7604ef2e323ca, type: 3}
+  - {fileID: 21300000, guid: 1178c5b19c49da042becd4ee69fd8040, type: 3}
+  - {fileID: 21300000, guid: b4e38a60e2bd05b4cb87f9e759a64637, type: 3}
+  - {fileID: 21300000, guid: c177659bc393a05469f64befe95b6498, type: 3}
+  - {fileID: 21300000, guid: f49fca6da8823b24f99f623aec7cb110, type: 3}
+  - {fileID: 21300000, guid: a27987aedb81f5f41a0d456e7ff26519, type: 3}
+  - {fileID: 21300000, guid: 9991a52de463e664e9e70da8b0d9e59d, type: 3}
+  - {fileID: 21300000, guid: 1adf98f5db8360b42b04778a5bfc8bad, type: 3}
+  - {fileID: 21300000, guid: 37c43abf5eac97249a30b3f8d88d1a17, type: 3}
+  - {fileID: 21300000, guid: b0a73fa87fceb834daf529244ad37e11, type: 3}
+  - {fileID: 21300000, guid: d036c6e076cdbae42a978601085afcbf, type: 3}
 --- !u!1 &3997443091696005816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7440643611449924277
 Transform:
   m_ObjectHideFlags: 0
@@ -1098,7 +1116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1546979503573878282
 Transform:
   m_ObjectHideFlags: 0
