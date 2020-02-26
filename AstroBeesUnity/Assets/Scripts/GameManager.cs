@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int numFlowers = 4; //amount of flowers to spawn
     public GameObject flowerPrefab;
 
+    public static int tracker;
+
     //target flower traits
     public int colorTarget;
     public int stemTarget;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tracker = 0;
         //finds the punnentt gameobject that holds the punnett script that calculates the punnett square
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         FlowerSpawning();

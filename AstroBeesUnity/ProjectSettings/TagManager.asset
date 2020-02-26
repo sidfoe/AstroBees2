@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - flower
-  - pot
   - punnett
+  - pod
   layers:
   - Default
   - TransparentFX

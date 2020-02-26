@@ -18,18 +18,31 @@ public class PlayerBehaviour : MonoBehaviour
     public int petalTraits;
     public int thornsTraits;
 
+    public int colorTraits2;
+    public int stemTraits2;
+    public int petalTraits2;
+    public int thornsTraits2;
+
     private bool onFlower = false;
     private GameObject flower;
     private GameObject lastFlower;
 
-    private bool onPot = false;
-    private GameObject pot;
+    private bool placedFirstTraits;
+
+    private bool onPod = false;
+    private GameObject pod;
+
+    private bool onTable = false;
+    private GameObject breedingTable;
 
     public float speed;
     private Vector3 target;
 
     private bool canOpen = true;
     public GameObject grabGenesOption;
+
+    private bool canOpenPlace = true;
+    public GameObject placeGenesOption;
 
     private bool canOpenBreed = true;
     public GameObject breedGenesOption;
@@ -38,6 +51,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
+        breedingTable = GameObject.Find("Breeding Table");
         target = transform.position;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -46,8 +60,8 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         Movement();
-        GiveGenes();
         OpenGeneOption();
+        OpenPlaceOption();
         OpenBreedOption();
     }
 
@@ -65,7 +79,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetMouseButtonDown(0) && !grabGenesOption.activeInHierarchy && !breedGenesOption.activeInHierarchy)
+        if (Input.GetMouseButtonDown(0) && !grabGenesOption.activeInHierarchy && !placeGenesOption.activeInHierarchy && !breedGenesOption.activeInHierarchy)
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
@@ -75,10 +89,41 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void GrabGenes()
     {
-        colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
-        stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
-        petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
-        thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        if (colorTraits == 0)
+        {
+            colorTraits = flower.GetComponent<FlowerBehaviour>().colorTraits;
+            stemTraits = flower.GetComponent<FlowerBehaviour>().stemTraits;
+            petalTraits = flower.GetComponent<FlowerBehaviour>().petalTraits;
+            thornsTraits = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        }
+        else if(colorTraits != 0 && colorTraits2 != 0)
+        {
+            MoveGenesUp();
+            colorTraits2 = flower.GetComponent<FlowerBehaviour>().colorTraits;
+            stemTraits2 = flower.GetComponent<FlowerBehaviour>().stemTraits;
+            petalTraits2 = flower.GetComponent<FlowerBehaviour>().petalTraits;
+            thornsTraits2 = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        }
+        else
+        {
+            colorTraits2 = flower.GetComponent<FlowerBehaviour>().colorTraits;
+            stemTraits2 = flower.GetComponent<FlowerBehaviour>().stemTraits;
+            petalTraits2 = flower.GetComponent<FlowerBehaviour>().petalTraits;
+            thornsTraits2 = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+        }
+
+    }
+
+    void MoveGenesUp()
+    {
+        colorTraits = colorTraits2;
+        stemTraits = stemTraits2;
+        petalTraits = petalTraits2;
+        thornsTraits = thornsTraits2;
+        colorTraits2 = 0;
+        stemTraits2 = 0;
+        petalTraits2 = 0;
+        thornsTraits2 = 0;
     }
 
     public void CloseGeneOption()
@@ -97,37 +142,55 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public void ClosePlaceOption()
+    {
+        placeGenesOption.SetActive(false);
+        canOpenPlace = false;
+    }
+
+    
+    void OpenPlaceOption()
+    {
+        if (onPod == true && placeGenesOption.activeInHierarchy == false && canOpenPlace)
+        {
+            Vector3 offset = new Vector3(0, -2.1f);
+            Vector3 menuPos = pod.transform.position + offset;
+            placeGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+            placeGenesOption.SetActive(true);
+        }
+    }
+
     public void CloseBreedOption()
     {
         breedGenesOption.SetActive(false);
         canOpenBreed = false;
     }
 
-    
+
     void OpenBreedOption()
     {
-        if (onPot == true && breedGenesOption.activeInHierarchy == false && canOpenBreed)
+        if (onTable == true && breedGenesOption.activeInHierarchy == false && canOpenBreed)
         {
             Vector3 offset = new Vector3(0, -2.1f);
-            Vector3 menuPos = pot.transform.position + offset;
+            Vector3 menuPos = breedingTable.transform.position + offset;
             breedGenesOption.transform.position = Camera.main.WorldToScreenPoint(menuPos);
             breedGenesOption.SetActive(true);
         }
     }
-    public void Breed()
+    //public void Breed()
+    //{
+    //    pod.GetComponent<PotBehaviour>().StartSquare();
+    //}
+
+    public void GiveGenes()
     {
-        pot.GetComponent<PotBehaviour>().StartSquare();
-    }
-    void GiveGenes()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && onPot == true)
-        {
-            pot.GetComponent<PotBehaviour>().colorTraits = colorTraits;
-            pot.GetComponent<PotBehaviour>().stemTraits = stemTraits;
-            pot.GetComponent<PotBehaviour>().petalTraits = petalTraits;
-            pot.GetComponent<PotBehaviour>().thornsTraits = thornsTraits;
-            pot.GetComponent<PotBehaviour>().StartSquare();
-        }
+        pod.GetComponent<PodBehavior>().colorTraits = colorTraits;
+        pod.GetComponent<PodBehavior>().stemTraits = stemTraits;
+        pod.GetComponent<PodBehavior>().petalTraits = petalTraits;
+        pod.GetComponent<PodBehavior>().thornsTraits = thornsTraits;
+        pod.GetComponent<PodBehavior>().hasTraits = true;
+        MoveGenesUp();
+        pod.GetComponent<PodBehavior>().SendTraits();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -140,14 +203,20 @@ public class PlayerBehaviour : MonoBehaviour
             flower.GetComponent<FlowerBehaviour>().Grow();
         }
 
-        if (col.gameObject.CompareTag("pot"))
+        if (col.gameObject.CompareTag("pod"))
         {
-            canOpenBreed = true;
-            onPot = true;
-            pot = col.gameObject;
+            canOpenPlace = true;
+            onPod = true;
+            pod = col.gameObject;
         }
 
-        if(col.gameObject.name == "SwitchAreaButton")
+        if (col.gameObject == breedingTable)
+        {
+            canOpenBreed = true;
+            onTable = true;
+        }
+
+        if (col.gameObject.name == "SwitchAreaButton")
         {
             Vector3 cameraPosChange = new Vector3(18.1f, 0);
             Vector3 playerPosChange = new Vector3(4, 0);
@@ -177,9 +246,9 @@ public class PlayerBehaviour : MonoBehaviour
             lastFlower.GetComponent<FlowerBehaviour>().Shrink();
         }
 
-        if (col.gameObject.CompareTag("pot"))
+        if (col.gameObject.CompareTag("pod"))
         {
-            onPot = false;
+            onPod = false;
             lastFlower = flower;
         }
 
