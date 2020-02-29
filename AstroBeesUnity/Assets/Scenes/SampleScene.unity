@@ -4187,7 +4187,7 @@ PrefabInstance:
     - target: {fileID: 5155140553718642585, guid: 30c2cdf5f0a9af04a8800a549c512be1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.88
+      value: 20.53
       objectReference: {fileID: 0}
     - target: {fileID: 5155140553718642585, guid: 30c2cdf5f0a9af04a8800a549c512be1,
         type: 3}
@@ -4988,7 +4988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Do you want to \ngrab these genes?"
+  m_Text: "Do you want to \ngrab this gene?"
 --- !u!222 &3350145862934676223
 CanvasRenderer:
   m_ObjectHideFlags: 0

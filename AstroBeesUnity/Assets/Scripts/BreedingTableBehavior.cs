@@ -37,7 +37,7 @@ public class BreedingTableBehavior : MonoBehaviour
         int petal = square.RunSquare(petalTraits, petalTraits2);
 
         GameObject flower = Instantiate(flowerPrefab, transform);
-        //flower.transform.localPosition = Vector3.zero;
+        flower.transform.localPosition = Vector3.zero;
 
         //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
         flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
@@ -90,6 +90,7 @@ public class BreedingTableBehavior : MonoBehaviour
         else if (thornsTraits != 0 && thornsTraits2 != 0 && GameManager.tracker == 3)
         {
             GameManager.tracker++;
+            StartSquare();
         }
     }
     // Update is called once per frame
