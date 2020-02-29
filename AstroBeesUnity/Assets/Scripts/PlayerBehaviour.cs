@@ -152,6 +152,14 @@ public class PlayerBehaviour : MonoBehaviour
             currentPanel.transform.position = Camera.main.WorldToScreenPoint(menuPos);
             currentPanel.SetActive(true);
         }
+        else if (currentPanel.activeInHierarchy == false && canOpen && onTable && GameManager.tracker > 3 && currentPanel == breedGenesPanel)
+        {
+            Vector3 offset = new Vector3(0, -2.1f);
+            Vector3 menuPos = obj.transform.position + offset;
+            canOpen = false;
+            currentPanel.transform.position = Camera.main.WorldToScreenPoint(menuPos);
+            currentPanel.SetActive(true);
+        }
     }
     public void ClosePanel()
     {

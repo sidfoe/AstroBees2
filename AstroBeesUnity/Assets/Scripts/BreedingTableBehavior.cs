@@ -90,7 +90,6 @@ public class BreedingTableBehavior : MonoBehaviour
         else if (thornsTraits != 0 && thornsTraits2 != 0 && GameManager.tracker == 3)
         {
             GameManager.tracker++;
-            StartSquare();
         }
     }
     // Update is called once per frame
