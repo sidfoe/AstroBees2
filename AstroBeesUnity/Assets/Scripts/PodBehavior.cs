@@ -7,14 +7,11 @@ using UnityEngine;
 public class PodBehavior : MonoBehaviour
 {
     public int podNumber;
+    public int traitType;
 
-    public int colorTraits;
-    public int stemTraits;
-    public int petalTraits;
-    public int thornsTraits;
+    public int trait;
 
-    public bool hasTraits = false;
-
+    public GameObject nextPod;
     private GameObject breedingTable;
     // Start is called before the first frame update
     void Start()
@@ -28,14 +25,10 @@ public class PodBehavior : MonoBehaviour
         
     }
 
-    void TakeTraits()
-    {
-        hasTraits = true;
-    }
 
     public void SendTraits()
     {
-        breedingTable.GetComponent<BreedingTableBehavior>().GetTraits(podNumber, colorTraits, stemTraits, petalTraits, thornsTraits);
+        breedingTable.GetComponent<BreedingTableBehavior>().GetTraits(podNumber, traitType, trait);
     }
 
 }

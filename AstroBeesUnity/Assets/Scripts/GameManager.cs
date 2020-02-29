@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tracker = 0;
+        tracker = 1;
         //finds the punnentt gameobject that holds the punnett script that calculates the punnett square
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         FlowerSpawning();
