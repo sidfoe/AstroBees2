@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,13 +23,21 @@ public class GameManager : MonoBehaviour
     MyRandom rand = new MyRandom();
     private Punnett square;
 
+    public GameObject targetFlowerPanel;
+    private Sprite tarFlower;
+
+    public GameObject winText;
+    public TextMeshProUGUI objectiveText;
+
     // Start is called before the first frame update
     void Start()
     {
         tracker = 1;
         //finds the punnentt gameobject that holds the punnett script that calculates the punnett square
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
+        //GenerateTargetFlower();
         FlowerSpawning();
+        objectiveText.text = "Find two flowers petals you like";
     }
 
     // Update is called once per frame
@@ -37,88 +47,105 @@ public class GameManager : MonoBehaviour
     }
 
     //Function that generates the target flower and spawns it on the first pot
-    void GenerateTargetFlower()
-    {
-        int trait;
-        MyRandom rand = new MyRandom();
+    //void GenerateTargetFlower()
+    //{
+    //    int trait;
+    //    MyRandom rand = new MyRandom();
 
-        //find more efficent way of assigning random traits
-        //COLOR
-        trait = rand.Next(1, 4);
+    //    //find more efficent way of assigning random traits
+    //    //COLOR
+    //    trait = rand.Next(1, 4);
 
-        if (trait == 1) // two big
-        {
-            colorTarget = 1;
-        }
+    //    if (trait == 1) // two big
+    //    {
+    //        colorTarget = 1;
+    //    }
 
-        else if (trait == 2) // two small
-        {
-            colorTarget = 2;
-        }
+    //    else if (trait == 2) // two small
+    //    {
+    //        colorTarget = 2;
+    //    }
 
-        else if (trait == 3) // one big one small 
-        {
-            colorTarget = 3;
-        }
-        rand.Reset();
+    //    else if (trait == 3) // one big one small 
+    //    {
+    //        colorTarget = 3;
+    //    }
+    //    rand.Reset();
 
-        //STEM
-        trait = rand.Next(1, 4);
+    //    //STEM
+    //    trait = rand.Next(1, 4);
 
-        if (trait == 1) // two big
-        {
-            stemTarget = 1;
-        }
+    //    if (trait == 1) // two big
+    //    {
+    //        stemTarget = 1;
+    //    }
 
-        else if (trait == 2) // two small
-        {
-            stemTarget = 2;
-        }
+    //    else if (trait == 2) // two small
+    //    {
+    //        stemTarget = 2;
+    //    }
 
-        else if (trait == 3) // one big one small 
-        {
-            stemTarget = 3;
-        }
-        rand.Reset();
+    //    else if (trait == 3) // one big one small 
+    //    {
+    //        stemTarget = 3;
+    //    }
+    //    rand.Reset();
 
-        //PETAL
-        trait = rand.Next(1, 4);
+    //    //PETAL
+    //    trait = rand.Next(1, 4);
 
-        if (trait == 1) // two big
-        {
-            petalTarget = 1;
-        }
+    //    if (trait == 1) // two big
+    //    {
+    //        petalTarget = 1;
+    //    }
 
-        else if (trait == 2) // two small
-        {
-            petalTarget = 2;
-        }
+    //    else if (trait == 2) // two small
+    //    {
+    //        petalTarget = 2;
+    //    }
 
-        else if (trait == 3) // one big one small 
-        {
-            petalTarget = 3;
-        }
-        rand.Reset();
+    //    else if (trait == 3) // one big one small 
+    //    {
+    //        petalTarget = 3;
+    //    }
+    //    rand.Reset();
 
-        //THORNS
-        trait = rand.Next(1, 4);
+    //    //THORNS
+    //    trait = rand.Next(1, 4);
 
-        if (trait == 1) // two big
-        {
-            thornsTarget = 1;
-        }
+    //    if (trait == 1) // two big
+    //    {
+    //        thornsTarget = 1;
+    //    }
 
-        else if (trait == 2) // two small
-        {
-            thornsTarget = 2;
-        }
+    //    else if (trait == 2) // two small
+    //    {
+    //        thornsTarget = 2;
+    //    }
 
-        else if (trait == 3) // one big one small 
-        {
-            thornsTarget = 3;
-        }
-        rand.Reset();
-    }
+    //    else if (trait == 3) // one big one small 
+    //    {
+    //        thornsTarget = 3;
+    //    }
+    //    rand.Reset();
+
+    //    GameObject flower = Instantiate(flowerPrefab, targetFlowerPanel.transform);
+    //    flower.GetComponent<FlowerBehaviour>().isTarget = true;
+    //    flower.transform.localPosition = new Vector3(0, 1.25f, 0);
+
+    //    flower.GetComponent<FlowerBehaviour>().colorTraits = colorTarget;
+    //    flower.GetComponent<FlowerBehaviour>().stemTraits = stemTarget;
+    //    flower.GetComponent<FlowerBehaviour>().petalTraits = petalTarget;
+    //    flower.GetComponent<FlowerBehaviour>().thornsTraits = thornsTarget;
+    //}
+
+    //public void CheckFlowerMatch(FlowerBehaviour fb)
+    //{
+    //    if(fb.colorTraits == colorTarget && fb.stemTraits == stemTarget && fb.petalTraits == petalTarget && fb.thornsTraits == thornsTarget)
+    //    {
+    //        winText.SetActive(true);
+    //    }
+    //}
 
     //Spawns the flowers in the outside envioronment
     void FlowerSpawning()

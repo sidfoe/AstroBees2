@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlowerBehaviour : MonoBehaviour
 {
-    // 1 = two big
-    //2 = two small
-    //3 = one big one small
+    //1 = LL
+    //2 = MM
+    //3 = SS
+    //4 = LS
+    //5 = LM
+    //6 = MS
 
     public int colorTraits; //1 red 2 blue 3 purple
     public int stemTraits; //1 & 3 yes 2 no on the leaves
@@ -18,9 +22,17 @@ public class FlowerBehaviour : MonoBehaviour
 
     public Sprite[] arr;
 
+    public GameObject tar;
+    public bool isTarget = false;
+
+    private void Awake()
+    {
+        tar = GameObject.FindGameObjectWithTag("tarImg");
+    }
+
     private void Start()
     {
-
+        
     }
 
     private void LateUpdate()
@@ -244,6 +256,11 @@ public class FlowerBehaviour : MonoBehaviour
                 }
             }
         }
+
+        if(isTarget == true)
+        {
+            TargetFlowerImage();
+        }
     }
 
     public void Grow()
@@ -261,5 +278,15 @@ public class FlowerBehaviour : MonoBehaviour
     public void SpawnedInPot()
     {
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void TargetFlowerImage()
+    {
+        tar.GetComponent<Image>().sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+
+        if(colorTraits == 3)
+        {
+            tar.GetComponent<Image>().color = new Color(.4f, .2f, 1, 1);
+        }
     }
 }
