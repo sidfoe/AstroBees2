@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - flower
-  - punnett
-<<<<<<< HEAD
-  - pod
-=======
-  - tarImg
-  - GameManager
->>>>>>> Sydney
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -46,18 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1071928753
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 48271419
-    locked: 0
-  - name: flowers
-    uniqueID: 128903619
-    locked: 0
-  - name: pots
-    uniqueID: 1763946759
     locked: 0
