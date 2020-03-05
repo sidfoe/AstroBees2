@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerBehaviour : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator anim;
 
     float horizontal;
     float vertical;
@@ -59,6 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
         breedingTable = GameObject.Find("Breeding Table");
         target = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -88,7 +90,31 @@ public class PlayerBehaviour : MonoBehaviour
             target.z = transform.position.z;
         }
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        if ((target.x - transform.position.x) > (target.z - transform.position.z))
+        {
+            if (target.x < transform.position.x)
+            {
+                anim.Play("BeeMoveLeft");
+            }
+            else if (target.x > transform.position.x)
+            {
+                anim.Play("BeeMoveRight");
+            }
+        }
+        else if ((target.x - transform.position.x) < (target.z - transform.position.z))
+        {
+            if (target.z < transform.position.z)
+            {
+                anim.Play("BeeMoveDown");
+            }
+            else if (target.z > transform.position.z)
+            {
+                anim.Play("BeeMoveUp");
+            }
+        }
     }
+
 
     public void GrabGenes()
     {
