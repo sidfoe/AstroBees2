@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         //GenerateTargetFlower();
         FlowerSpawning();
-        objectiveText.text = "Find two flowers petals you like";
+        //objectiveText.text = "Find two flowers petals you like";
     }
 
     // Update is called once per frame
@@ -170,27 +170,42 @@ public class GameManager : MonoBehaviour
         //find more efficent way of assigning random traits
         //COLOR
         rand.Reset();
-        trait = rand.Next(1, 4);
+        //trait = rand.Next(1, 4);
 
-        if (trait == 1) // two big
-        {
-            flower.GetComponent<FlowerBehaviour>().colorTraits = 1;
-        }
+        //if (trait == 1) // two big
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 1;
+        //}
 
-        else if (trait == 2) // two small
-        {
-            flower.GetComponent<FlowerBehaviour>().colorTraits = 2;
-        }
+        //else if (trait == 2) // two small
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 2;
+        //}
 
-        else if (trait == 3) //one big one small 
-        {
-            flower.GetComponent<FlowerBehaviour>().colorTraits = 3;
-        }
-        rand.Reset();
+        //else if (trait == 3) //one big one small 
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 3;
+        //}
+
+        //else if (trait == 4) //one big one small 
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 4;
+        //}
+
+        //else if (trait == 5) //one big one small 
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 5;
+        //}
+
+        //else if (trait == 6) //one big one small 
+        //{
+        //    flower.GetComponent<FlowerBehaviour>().colorTraits = 6;
+        //}
+        //rand.Reset();
 
 
         //STEM
-        trait = rand.Next(1, 4);
+        trait = rand.Next(1, 7);
 
         if (trait == 1) // two big
         {
@@ -206,11 +221,26 @@ public class GameManager : MonoBehaviour
         {
             flower.GetComponent<FlowerBehaviour>().stemTraits = 3;
         }
+
+        else if (trait == 4) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 4;
+        }
+
+        else if (trait == 5) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 5;
+        }
+
+        else if (trait == 6) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().stemTraits = 6;
+        }
         rand.Reset();
 
 
         //PETAL
-        trait = rand.Next(1, 4);
+        trait = rand.Next(1, 7);
 
         if (trait == 1) // two big
         {
@@ -226,11 +256,27 @@ public class GameManager : MonoBehaviour
         {
             flower.GetComponent<FlowerBehaviour>().petalTraits = 3;
         }
+
+        else if (trait == 4) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 4;
+        }
+
+        else if (trait == 5) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 5;
+        }
+
+        else if (trait == 6) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().petalTraits = 6;
+        }
+
         rand.Reset();
 
 
         //THORNS
-        trait = rand.Next(1, 4);
+        trait = rand.Next(1, 7);
 
         if (trait == 1) // two big
         {
@@ -245,6 +291,21 @@ public class GameManager : MonoBehaviour
         else if (trait == 3) // two small
         {
             flower.GetComponent<FlowerBehaviour>().thornsTraits = 3;
+        }
+
+        else if (trait == 4) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 4;
+        }
+
+        else if (trait == 5) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 5;
+        }
+
+        else if (trait == 6) // two small
+        {
+            flower.GetComponent<FlowerBehaviour>().thornsTraits = 6;
         }
         rand.Reset();
         StartCoroutine("WaitTime");
