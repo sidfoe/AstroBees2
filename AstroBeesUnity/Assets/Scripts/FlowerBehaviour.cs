@@ -87,25 +87,31 @@ public class FlowerBehaviour : MonoBehaviour
                     break;
             }
 
-            switch (stemTraits)
+            switch (thornsTraits)
             {
                 case 1:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[0];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[0];
                     break;
                 case 2:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[1];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[1];
                     break;
                 case 3:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[2];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[2];
                     break;
                 case 4:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[3];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[3];
                     break;
                 case 5:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[4];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[4];
                     break;
                 case 6:
                     gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = thorn[5];
+                    gameObject.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = thorn[5];
                     break;
             }
         }
