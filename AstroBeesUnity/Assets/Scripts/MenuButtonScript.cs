@@ -14,7 +14,7 @@ public class MenuButtonScript : MonoBehaviour
 
     void NextScene()
 	{
-        SceneManager.LoadScene("IntroCutscene");
+        SceneManager.LoadScene("GameScene");
 	}
 
     public void HowToPlayPanelOn()
