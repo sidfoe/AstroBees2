@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BreedingTableBehavior : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class BreedingTableBehavior : MonoBehaviour
     public int petalTraits2;
     public int thornsTraits2;
 
+    public Text collectText;
     public GameObject flowerPrefab;
 
     private Punnett square;
@@ -25,6 +27,8 @@ public class BreedingTableBehavior : MonoBehaviour
     void Start()
     {
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
+        collectText.text = "Collect petal genes!";
+
         //pod1 = GameObject.Find("Pod1");
         //pod2 = GameObject.Find("Pod2");
     }
@@ -82,14 +86,17 @@ public class BreedingTableBehavior : MonoBehaviour
         if (petalTraits != 0 && petalTraits2 != 0 && GameManager.tracker == 1)
         {
             GameManager.tracker++;
+            collectText.text = "Collect stem genes!";
         }
         else if (stemTraits != 0 && stemTraits2 != 0 && GameManager.tracker == 2)
         {
             GameManager.tracker++;
+            collectText.text = "Collect thorn genes!";
         }
         else if (thornsTraits != 0 && thornsTraits2 != 0 && GameManager.tracker == 3)
         {
             GameManager.tracker++;
+            collectText.text = "Breed your flower!";
         }
     }
     // Update is called once per frame

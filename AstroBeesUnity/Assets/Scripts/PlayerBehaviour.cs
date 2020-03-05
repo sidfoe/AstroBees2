@@ -200,7 +200,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        print("colldied");
         if (col.gameObject.CompareTag("flower"))
         {
             canOpen = true;
@@ -222,7 +221,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (col.gameObject == breedingTable)
         {
-            print("table");
             canOpen = true;
             onTable = true;
             obj = col.gameObject;
