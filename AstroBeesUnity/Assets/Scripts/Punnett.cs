@@ -53,38 +53,38 @@ public class Punnett : MonoBehaviour
                 break;
         }
 
-        rand = Random.Range(0, 2) + 2;
+        rand = Random.Range(2, 4);
 
         switch (two)
         {
             case 1:
+                square[2] = "L";
                 square[3] = "L";
-                square[4] = "L";
                 results[1] = square[rand];
                 break;
             case 2:
+                square[2] = "M";
                 square[3] = "M";
-                square[4] = "M";
                 results[1] = square[rand];
                 break;
             case 3:
+                square[2] = "S";
                 square[3] = "S";
-                square[4] = "S";
                 results[1] = square[rand];
                 break;
             case 4:
-                square[3] = "L";
-                square[4] = "M";
+                square[2] = "L";
+                square[3] = "M";
                 results[1] = square[rand];
                 break;
             case 5:
-                square[3] = "L";
-                square[4] = "S";
+                square[2] = "L";
+                square[3] = "S";
                 results[1] = square[rand];
                 break;
             case 6:
-                square[3] = "M";
-                square[4] = "S";
+                square[2] = "M";
+                square[3] = "S";
                 results[1] = square[rand];
                 break;
         }
