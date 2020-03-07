@@ -92,7 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if ((target.x - transform.position.x) > (target.z - transform.position.z))
+        if ((Mathf.Abs(target.x) - Mathf.Abs(transform.position.x)) > (Mathf.Abs(target.y) - Mathf.Abs(transform.position.y)))
         {
             if (target.x < transform.position.x)
             {
@@ -103,13 +103,13 @@ public class PlayerBehaviour : MonoBehaviour
                 anim.Play("BeeMoveRight");
             }
         }
-        else if ((target.x - transform.position.x) < (target.z - transform.position.z))
+        else if ((Mathf.Abs(target.x) - Mathf.Abs(transform.position.x)) < (Mathf.Abs(target.y) - Mathf.Abs(transform.position.y)))
         {
-            if (target.z < transform.position.z)
+            if (target.y < transform.position.y)
             {
                 anim.Play("BeeMoveDown");
             }
-            else if (target.z > transform.position.z)
+            else if (target.y > transform.position.y)
             {
                 anim.Play("BeeMoveUp");
             }

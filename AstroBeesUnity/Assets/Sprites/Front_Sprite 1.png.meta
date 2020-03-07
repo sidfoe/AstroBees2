@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: d84ea54c9ee6c9643a102db786f6fe88
+guid: e66c467dc51855d42905b5478b57156a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3815585332602730400
-    second: Front_Sprite_0
+      213: -4518829070290694670
+    second: Front_Sprite 1_0
   - first:
-      213: 869742239799125363
-    second: Front_Sprite_1
+      213: -2728822421342892821
+    second: Front_Sprite 1_1
   - first:
-      213: -405402693806535526
-    second: Front_Sprite_2
+      213: 2423340898589735183
+    second: Front_Sprite 1_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -51,14 +51,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   spritePixelsToUnits: 1500
-=======
-  spritePixelsToUnits: 1300
->>>>>>> Sydney
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,30 +92,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -135,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Front_Sprite_0
+      name: Front_Sprite 1_0
       rect:
         serializedVersion: 2
         x: 238
@@ -149,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0b4491905cb17c40aef0639fa09f33f
-      internalID: -3815585332602730400
+      spriteID: 73ce56bf1d09b2f428cf4e62bb46fd41
+      internalID: -4518829070290694670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Front_Sprite_1
+      name: Front_Sprite 1_1
       rect:
         serializedVersion: 2
         x: 1038
@@ -170,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd0b4e1adb48fd74e8c84d7ffcfe9a2f
-      internalID: 869742239799125363
+      spriteID: 0adab1062f41f9a4eac540ea44e690b1
+      internalID: -2728822421342892821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Front_Sprite_2
+      name: Front_Sprite 1_2
       rect:
         serializedVersion: 2
         x: 238
@@ -191,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 104e1e39c3170434f98d220d2d293539
-      internalID: -405402693806535526
+      spriteID: a32454e11d651774aafe14da9efab856
+      internalID: 2423340898589735183
       vertices: []
       indices: 
       edges: []
