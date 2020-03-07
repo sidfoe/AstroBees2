@@ -31,6 +31,7 @@ public class PodBehavior : MonoBehaviour
     public void SendTraits()
     {
         traitObj.GetComponent<SpriteRenderer>().sprite = traitSprite;
+        traitObj.GetComponent<SpriteRenderer>().color = Color.white;
         breedingTable.GetComponent<BreedingTableBehavior>().GetTraits(podNumber, traitType, trait);
     }
 

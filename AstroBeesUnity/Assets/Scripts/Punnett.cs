@@ -104,17 +104,18 @@ public class Punnett : MonoBehaviour
             return 3;
         }
 
-        if (results[0] == "L" && results[1] == "M")
+        if (results[0] == "L" && results[1] == "M" || results[0] == "M" && results[1] == "L")
         {
             return 4;
         }
 
-        if (results[0] == "L" && results[1] == "s")
+
+        if (results[0] == "L" && results[1] == "S" || results[0] == "S" && results[1] == "L")
         {
             return 5;
         }
 
-        if (results[0] == "M" && results[1] == "S")
+        if (results[0] == "M" && results[1] == "S" || results[0] == "S" && results[1] == "M")
         {
             return 6;
         }
