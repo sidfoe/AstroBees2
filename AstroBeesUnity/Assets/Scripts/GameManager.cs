@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int petalTarget;
     public int thornsTarget;
 
+
     MyRandom rand = new MyRandom();
     private Punnett square;
 
