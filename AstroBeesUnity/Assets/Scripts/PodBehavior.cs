@@ -9,8 +9,10 @@ public class PodBehavior : MonoBehaviour
     public int podNumber;
     public int traitType;
 
-    public int trait;
+    public Sprite traitSprite;
+    public GameObject traitObj;
 
+    public int trait;
     public GameObject nextPod;
     private GameObject breedingTable;
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class PodBehavior : MonoBehaviour
 
     public void SendTraits()
     {
+        traitObj.GetComponent<SpriteRenderer>().sprite = traitSprite;
         breedingTable.GetComponent<BreedingTableBehavior>().GetTraits(podNumber, traitType, trait);
     }
 

@@ -24,6 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     public int petalTraits2;
     public int thornsTraits2;
 
+    public Sprite currentSprite;
     public int currentTrait;
 
     private bool onFlower = false;
@@ -36,7 +37,6 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject pod;
 
     private bool onTable = false;
-    private GameObject breedingTable;
 
     public float speed;
     private Vector3 target;
@@ -46,6 +46,8 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject grabGenesPanel;
     public GameObject placeGenesPanel;
     public GameObject breedGenesPanel;
+
+    public GameObject breedingTable;
 
     public GameObject firstPod;
 
@@ -57,7 +59,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         pod = firstPod;
         currentPanel = grabGenesPanel;
-        breedingTable = GameObject.Find("Breeding Table");
         target = transform.position;
         rb = GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
@@ -121,17 +122,22 @@ public class PlayerBehaviour : MonoBehaviour
         
         if (GameManager.tracker == 1)
         {
+            currentSprite = flower.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+            print(currentSprite.name);
             currentTrait = flower.GetComponent<FlowerBehaviour>().petalTraits;
         }
         else if (GameManager.tracker == 2)
         {
+            currentSprite = flower.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite;
+
             currentTrait = flower.GetComponent<FlowerBehaviour>().stemTraits;
         }
         else 
         {
+            currentSprite = flower.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite;
             currentTrait = flower.GetComponent<FlowerBehaviour>().thornsTraits;
         }
-     
+
         //else if(currentTrait != 0 && currentTrait2 != 0)
         //{
         //    MoveGenesUp();
@@ -163,6 +169,7 @@ public class PlayerBehaviour : MonoBehaviour
         //        currentTrait2 = flower.GetComponent<FlowerBehaviour>().thornsTraits;
         //    }
         //}
+        pod.GetComponent<PodBehavior>().traitSprite = currentSprite;
         pod.GetComponent<PodBehavior>().trait = currentTrait;
         pod.GetComponent<PodBehavior>().SendTraits();
         pod = pod.GetComponent<PodBehavior>().nextPod;
@@ -211,8 +218,9 @@ public class PlayerBehaviour : MonoBehaviour
         {
             pod.GetComponent<PodBehavior>().trait = currentTrait;
         }
-       
+
         //MoveGenesUp();
+        
         pod.GetComponent<PodBehavior>().SendTraits();
     }
 
