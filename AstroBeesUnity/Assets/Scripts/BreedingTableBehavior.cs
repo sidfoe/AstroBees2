@@ -17,6 +17,9 @@ public class BreedingTableBehavior : MonoBehaviour
 
     public Text collectText;
     public GameObject flowerPrefab;
+    public GameObject breedGraphic;
+
+    public GameObject pod1;
 
     private Punnett square;
 
@@ -36,18 +39,23 @@ public class BreedingTableBehavior : MonoBehaviour
     public void StartSquare()
     {
         //int color = square.RunSquare(colorTraits, colorTraits2);
-        int stem = square.RunSquare(stemTraits, stemTraits2);
-        int thorns = square.RunSquare(thornsTraits, thornsTraits2);
-        int petal = square.RunSquare(petalTraits, petalTraits2);
+        //int stem = square.RunSquare(stemTraits, stemTraits2);
+        //int thorns = square.RunSquare(thornsTraits, thornsTraits2);
+        //int petal = square.RunSquare(petalTraits, petalTraits2);
 
-        GameObject flower = Instantiate(flowerPrefab, transform);
-        flower.transform.localPosition = Vector3.zero;
+        //GameObject flower = Instantiate(flowerPrefab, transform);
+        //flower.transform.localPosition = Vector3.zero;
 
         //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
-        flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
-        flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
-        flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
-        flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
+        //flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
+        //flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
+        //flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
+        //flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
+
+        breedGraphic.SetActive(true);
+        breedGraphic.GetComponent<BreedGraphicBehavior>().start = true;
+
+        pod1.GetComponent<PodBehavior>().BreedGraphic();
     }
 
 
