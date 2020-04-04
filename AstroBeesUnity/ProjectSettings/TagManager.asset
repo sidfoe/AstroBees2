@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: environment decals
+    uniqueID: 1371989605
+    locked: 0
   - name: Flower
     uniqueID: 3606084879
     locked: 0
