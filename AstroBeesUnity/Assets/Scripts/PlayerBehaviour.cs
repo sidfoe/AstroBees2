@@ -260,14 +260,14 @@ public class PlayerBehaviour : MonoBehaviour
             if (currentArea % 2 == 1) 
             {
                 // Goes to ship
-                Camera.main.transform.position += cameraPosChange;
-                transform.position += playerPosChange;
+                Camera.main.transform.position -= cameraPosChange;
+                transform.position -= playerPosChange;
             }
             else
             {
                 // Goes to planet
-                Camera.main.transform.position -= cameraPosChange;
-                transform.position -= playerPosChange;
+                Camera.main.transform.position += cameraPosChange;
+                transform.position += playerPosChange;
             }
             CancelMovement();
         }
