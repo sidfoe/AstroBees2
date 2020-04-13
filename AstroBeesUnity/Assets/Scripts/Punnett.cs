@@ -13,47 +13,46 @@ public class Punnett : MonoBehaviour
 
     public int RunSquare(int one, int two) //runs punnett square with two pairs of triats
     {
-        string[] square = new string[4];
-        string[,] squareResults = new string[4, 2];
-        string[] results = new string[2];
+        string[] square = new string[4]; //array of the traits being put together 0 & 1 are the first flwoer 2 & 3 are the second
+        string[] results = new string[2]; //the results of the punnet square
 
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 2); //randomly chooses which of the two traits it is taking for the result
 
         switch (one)
         {
-            case 1:
-                square[0] = "L";
-                square[1] = "L";
-                results[0] = square[rand];
+            case 1: //LL
+                square[0] = "L"; //gene one
+                square[1] = "L"; //gene two
+                results[0] = square[rand]; //assigns first result gene by randomly choosing on of the two
                 break;
-            case 2:
+            case 2: //MM
                 square[0] = "M";
                 square[1] = "M";
                 results[0] = square[rand];
                 break;
-            case 3:
+            case 3: //SS
                 square[0] = "S";
                 square[1] = "S";
                 results[0] = square[rand];
                 break;
-            case 4:
+            case 4: //LS
                 square[0] = "L";
                 square[1] = "M";
                 results[0] = square[rand];
                 break;
-            case 5:
+            case 5: //LM
                 square[0] = "L";
                 square[1] = "S";
                 results[0] = square[rand];
                 break;
-            case 6:
+            case 6: //MS
                 square[0] = "M";
                 square[1] = "S";
                 results[0] = square[rand];
                 break;
         }
 
-        rand = Random.Range(2, 4);
+        rand = Random.Range(2, 4); //randomly chooses which of the two traits it is taking for the result
 
         switch (two)
         {
@@ -89,7 +88,8 @@ public class Punnett : MonoBehaviour
                 break;
         }
 
-        if(results[0] == "L" && results[1] == "L")
+        //These sets of if statements return the result by returning the number for the type
+        if(results[0] == "L" && results[1] == "L") 
         {
             return 1;
         }

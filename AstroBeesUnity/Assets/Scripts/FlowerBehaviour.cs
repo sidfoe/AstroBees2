@@ -13,10 +13,10 @@ public class FlowerBehaviour : MonoBehaviour
     //5 = LS
     //6 = MS
 
-    public int colorTraits; //1 red 2 blue 3 purple
-    public int stemTraits; //1 & 3 yes 2 no on the leaves
-    public int petalTraits; //1 & 3 bubbly boy 3 skinny
-    public int thornsTraits; //1 & 3 thorns 2 no
+    public int colorTraits; 
+    public int stemTraits; 
+    public int petalTraits; 
+    public int thornsTraits; 
 
     public bool updateLook = false;
 
@@ -38,7 +38,8 @@ public class FlowerBehaviour : MonoBehaviour
     }
 
     private void LateUpdate()
-    {
+    { 
+        //sets look for the flower right after they are created, this only runs once
         if(updateLook == false)
         {
             updateLook = true;
@@ -122,13 +123,13 @@ public class FlowerBehaviour : MonoBehaviour
         //}
     }
 
-    public void Grow()
+    public void Grow() //enlarges flower when player is on it, possibly choosing it
     {
         Vector3 newSize = new Vector3(1.5f, 1.5f);
         transform.localScale = newSize;
     }
 
-    public void Shrink()
+    public void Shrink() //makes flower smaller after the player chooses it or not
     {
         Vector3 newSize = new Vector3(1, 1);
         transform.localScale = newSize;
