@@ -154,6 +154,10 @@ public class PlayerBehaviour : MonoBehaviour
         if (currentPanel.activeInHierarchy == false && canOpen && (onFlower || onPod || onTable) && GameManager.tracker <= 3)
         {
             Vector3 offset = new Vector3(0, -2.1f);
+            if (onFlower)
+            {
+                offset = GetOffset(flower.transform.position.x, flower.transform.position.y);
+            }
             Vector3 menuPos = obj.transform.position + offset;
             canOpen = false;
             currentPanel.transform.position = Camera.main.WorldToScreenPoint(menuPos);
@@ -198,6 +202,27 @@ public class PlayerBehaviour : MonoBehaviour
         pod.GetComponent<PodBehavior>().SendTraits();
     }
 
+    Vector3 GetOffset(float xPos, float yPos)
+    {
+        Vector3 offset = new Vector3();
+        if ((xPos >= -7.25 && xPos <= 7.25) && yPos >= -2)
+        {
+            offset = new Vector3(0, -2.1f);
+        }
+        else if ((xPos >= -7.25 && xPos <= 7.25) && yPos < -2)
+        {
+            offset = new Vector3(0, 1.8f);
+        }
+        else if (xPos > 7.25)
+        {
+            offset = new Vector3(-3, 0);
+        }
+        else if (xPos < -7.25)
+        {
+            offset = new Vector3(3, 0);
+        }
+        return offset;
+    }
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("flower"))
