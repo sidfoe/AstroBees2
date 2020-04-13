@@ -53,3 +53,6 @@ TagManager:
   - name: Flower
     uniqueID: 3606084879
     locked: 0
+  - name: Flower Particles
+    uniqueID: 3049625229
+    locked: 0
