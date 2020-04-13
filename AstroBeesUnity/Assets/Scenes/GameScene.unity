@@ -3912,10 +3912,10 @@ MonoBehaviour:
   stemTraits2: 0
   petalTraits2: 0
   thornsTraits2: 0
-  collectText: {fileID: 0}
+  collectText: {fileID: 352059069}
   flowerPrefab: {fileID: 2869772296295707310, guid: 5df07accd973c5b4ebfb168ab52760cc,
     type: 3}
-  breedGraphic: {fileID: 0}
+  breedGraphic: {fileID: 837399368}
   pod1: {fileID: 0}
 --- !u!95 &1292706294
 Animator:
