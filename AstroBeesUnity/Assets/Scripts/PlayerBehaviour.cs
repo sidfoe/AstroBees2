@@ -54,6 +54,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private int currentArea;
 
+    private ParticleSystem lastFlowerPS; //the flower particle system, when collected it plays until we have an animation or in addition to the animation
+
     void Start()
     {
         pod = firstPod;
@@ -93,7 +95,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void GrabGenes()
     {
-        
         if (GameManager.tracker == 1)
         {
             currentSprite = flower.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
@@ -111,6 +112,8 @@ public class PlayerBehaviour : MonoBehaviour
             currentSprite = flower.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite;
             currentTrait = flower.GetComponent<FlowerBehaviour>().thornsTraits;
         }
+
+        lastFlowerPS.Play();
 
         //else if(currentTrait != 0 && currentTrait2 != 0)
         //{
@@ -143,6 +146,7 @@ public class PlayerBehaviour : MonoBehaviour
         //        currentTrait2 = flower.GetComponent<FlowerBehaviour>().thornsTraits;
         //    }
         //}
+
         pod.GetComponent<PodBehavior>().traitSprite = currentSprite;
         pod.GetComponent<PodBehavior>().trait = currentTrait;
         pod.GetComponent<PodBehavior>().SendTraits();
@@ -232,6 +236,7 @@ public class PlayerBehaviour : MonoBehaviour
             obj = col.gameObject;
             currentPanel = grabGenesPanel;
             flower = col.gameObject;
+            lastFlowerPS = col.gameObject.GetComponent<ParticleSystem>();
             flower.GetComponent<FlowerBehaviour>().Grow();
         }
 
@@ -260,14 +265,14 @@ public class PlayerBehaviour : MonoBehaviour
             if (currentArea % 2 == 1) 
             {
                 // Goes to ship
-                Camera.main.transform.position += cameraPosChange;
-                transform.position += playerPosChange;
+                Camera.main.transform.position -= cameraPosChange;
+                transform.position -= playerPosChange;
             }
             else
             {
                 // Goes to planet
-                Camera.main.transform.position -= cameraPosChange;
-                transform.position -= playerPosChange;
+                Camera.main.transform.position += cameraPosChange;
+                transform.position += playerPosChange;
             }
             CancelMovement();
         }
