@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwitchAreaBehaviors : MonoBehaviour
 {
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +20,6 @@ public class SwitchAreaBehaviors : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Switch Scene");
+        
     }
 }

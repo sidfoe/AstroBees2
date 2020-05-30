@@ -56,6 +56,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private ParticleSystem lastFlowerPS; //the flower particle system, when collected it plays until we have an animation or in addition to the animation
 
+    public bool goneOutside = false;
+
     void Start()
     {
         pod = firstPod;
@@ -259,6 +261,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (col.gameObject.name == "SwitchAreaButton")
         {
+            if (goneOutside == false)
+            {
+                goneOutside = true;
+            }
+
             Vector3 cameraPosChange = new Vector3(18.1f, 0);
             Vector3 playerPosChange = new Vector3(4, 0);
             currentArea++;
