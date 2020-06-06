@@ -25,6 +25,8 @@ public class BreedingTableBehavior : MonoBehaviour
 
     public GameObject returnButton;
 
+    private bool runOnce = false;
+
     //private GameObject pod1;
     //private GameObject pod2;
 
@@ -126,8 +128,9 @@ public class BreedingTableBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(FindObjectOfType<PlayerBehaviour>().goneOutside == true)
+        if(FindObjectOfType<PlayerBehaviour>().goneOutside == true && runOnce == false)
         {
+            runOnce = true;
             collectText.text = "Collect your first petal gene!";
         }
     }
