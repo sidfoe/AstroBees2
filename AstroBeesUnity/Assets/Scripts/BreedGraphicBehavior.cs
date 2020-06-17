@@ -14,6 +14,9 @@ public class BreedGraphicBehavior : MonoBehaviour
     private bool traitsInPlace = false;
     private bool traitsSplit = false;
 
+    public GameObject tableTraits;
+    public Text collectText;
+    public GameObject graphicPanel;
     public Image topLeftImage;
     public Image topRightImage;
     public Image botLeftImage;
@@ -51,19 +54,28 @@ public class BreedGraphicBehavior : MonoBehaviour
     public Sprite thorn6;
 
     private int[,] crossTraits = new int [2,2];
-    private int tabTrait1 = 0;
-    private int tabTrait2 = 0;
-    private int tabTrait3 = 0;
-    private int tabTrait4 = 0;
+    private int tableTrait1 = 0;
+    private int tableTrait2 = 0;
+    private int tableTrait3 = 0;
+    private int tableTrait4 = 0;
 
     [Header("Table Trait Objects")]
-    public GameObject tableTrait1;
-    public GameObject tableTrait2;
-    public GameObject tableTrait3;
-    public GameObject tableTrait4;
+    public GameObject tableTraitObj1;
+    public GameObject tableTraitObj2;
+    public GameObject tableTraitObj3;
+    public GameObject tableTraitObj4;
+
+    [Header("Table Cross Trait Objects")]
+    public GameObject crossObj00;
+    public GameObject crossObj01;
+    public GameObject crossObj10;
+    public GameObject crossObj11;
 
 
-    
+    private int outputPetal;
+    private int outputStem;
+    private int outputThorn;
+
     private int graphicCounter = 0;
     // Start is called before the first frame update
     void Start()
@@ -88,15 +100,29 @@ public class BreedGraphicBehavior : MonoBehaviour
         
     }
 
-    public void StartGraphic()
+    public void StartGraphic(int finalPetal, int finalStem, int finalThorn)
     {
+        collectText.color = Color.clear;
+        graphicPanel.SetActive(true);
+        outputPetal = finalPetal;
+        outputStem = finalStem;
+        outputThorn = finalThorn;
         SplitTraits();
         gameObject.SetActive(true);
         graphicCounter = 0;
         traitsInPlace = false;
         traitsSplit = false;        
     }
-
+    public void StartGraphic()
+    {
+        collectText.color = Color.clear;
+        graphicPanel.SetActive(true);
+        SplitTraits();
+        gameObject.SetActive(true);
+        graphicCounter = 0;
+        traitsInPlace = false;
+        traitsSplit = false;
+    }
     void StartCoreGraphic()
     {
         StartCoroutine(PlayGraphic());
@@ -118,10 +144,19 @@ public class BreedGraphicBehavior : MonoBehaviour
         {
             graphicCounter++;
             ChangeSquare();
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(.5f);
+        }       
+        if (traitCounter < 3)
+        {
+            traitCounter++;
+            graphicCounter = 0;
+            SplitTraits();
         }
-        ChangeTraits();
-        traitCounter++;
+        else
+        {
+            gameObject.SetActive(false);
+            tableTraits.SetActive(false);
+        }
         yield break;
     }
 
@@ -158,15 +193,10 @@ public class BreedGraphicBehavior : MonoBehaviour
     }
     void ChangeTraits()
     {
-        //petals
-        if (traitCounter == 0)
-        {
-
-        }
+        
     }
     void SplitTraits()
     {
-        print("Splitting traits");
         int trait1 = 0;
         int trait2 = 0;
         if (traitCounter == 0)
@@ -254,36 +284,35 @@ public class BreedGraphicBehavior : MonoBehaviour
 
     void CreateTable()
     {
-        print("creating");
         // LEFT SIDE
         if (crossTraits[0, 0] == 1)
         {
             // top left
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait1 = 1;
+                tableTrait1 = 1;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait1 = 4;
+                tableTrait1 = 4;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait1 = 5;
+                tableTrait1 = 5;
             }
 
             // bot left
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait3 = 1;
+                tableTrait3 = 1;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait3 = 4;
+                tableTrait3 = 4;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait3 = 5;
+                tableTrait3 = 5;
             }
         }
         else if (crossTraits[0, 0] == 2)
@@ -291,29 +320,29 @@ public class BreedGraphicBehavior : MonoBehaviour
             // top left
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait1 = 4;
+                tableTrait1 = 4;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait1 = 2;
+                tableTrait1 = 2;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait1 = 6;
+                tableTrait1 = 6;
             }
 
             // bot left
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait3 = 4;
+                tableTrait3 = 4;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait3 = 2;
+                tableTrait3 = 2;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait3 = 6;
+                tableTrait3 = 6;
             }
         }
         else if (crossTraits[0, 0] == 3)
@@ -321,29 +350,29 @@ public class BreedGraphicBehavior : MonoBehaviour
             // top left
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait1 = 5;
+                tableTrait1 = 5;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait1 = 6;
+                tableTrait1 = 6;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait1 = 3;
+                tableTrait1 = 3;
             }
 
             // bot left
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait3 = 5;
+                tableTrait3 = 5;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait3 = 6;
+                tableTrait3 = 6;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait1 = 3;
+                tableTrait1 = 3;
             }
         }
 
@@ -353,29 +382,29 @@ public class BreedGraphicBehavior : MonoBehaviour
             // top right
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait2 = 1;
+                tableTrait2 = 1;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait2 = 4;
+                tableTrait2 = 4;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait2 = 5;
+                tableTrait2 = 5;
             }
 
             // bot right
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait4 = 1;
+                tableTrait4 = 1;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait4 = 4;
+                tableTrait4 = 4;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait4 = 5;
+                tableTrait4 = 5;
             }
         }
         else if (crossTraits[1, 0] == 2)
@@ -383,29 +412,29 @@ public class BreedGraphicBehavior : MonoBehaviour
             // top right
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait2 = 4;
+                tableTrait2 = 4;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait2 = 2;
+                tableTrait2 = 2;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait2 = 6;
+                tableTrait2 = 6;
             }
 
             // bot right
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait4 = 4;
+                tableTrait4 = 4;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait4 = 2;
+                tableTrait4 = 2;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait4 = 6;
+                tableTrait4 = 6;
             }
         }
         else if (crossTraits[1, 0] == 3)
@@ -413,29 +442,29 @@ public class BreedGraphicBehavior : MonoBehaviour
             // top right
             if (crossTraits[0, 1] == 1)
             {
-                tabTrait2 = 5;
+                tableTrait2 = 5;
             }
             else if (crossTraits[0, 1] == 2)
             {
-                tabTrait2 = 6;
+                tableTrait2 = 6;
             }
             else if (crossTraits[0, 1] == 3)
             {
-                tabTrait2 = 3;
+                tableTrait2 = 3;
             }
 
             // bot right
             if (crossTraits[1, 1] == 1)
             {
-                tabTrait4 = 5;
+                tableTrait4 = 5;
             }
             else if (crossTraits[1, 1] == 2)
             {
-                tabTrait4 = 6;
+                tableTrait4 = 6;
             }
             else if (crossTraits[1, 1] == 3)
             {
-                tabTrait4 = 3;
+                tableTrait4 = 3;
             }
         }
 
@@ -446,287 +475,573 @@ public class BreedGraphicBehavior : MonoBehaviour
     {
         if (traitCounter == 0)
         {
-            switch (tabTrait1)
+            // TABLE TRAITS
+            switch (tableTrait1)
             {              
                 case 1:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal1;
-                    print("petal1");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal1;
                     break;
                 case 2:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal2;
-                    print("petal2");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal2;
                     break;
                 case 3:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal3;
-                    print("petal3");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal3;
                     break;
                 case 4:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal4;
-                    print("petal4");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal4;
                     break;
                 case 5:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal5;
-                    print("petal5");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal5;
                     break;
                 case 6:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = petal6;
-                    print("petal6");
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal6;
                     break;
 
             }
-            tableTrait1.SetActive(true);
-            switch (tabTrait2)
+            print("Table1 = " + tableTrait1);
+            tableTraitObj1.SetActive(true);
+            switch (tableTrait2)
             {
                 case 1:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal1;
                     break;
                 case 2:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal2;
                     break;
                 case 3:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal3;
                     break;
                 case 4:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal4;
                     break;
                 case 5:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal5;
                     break;
                 case 6:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal6;
                     break;
 
             }
-            tableTrait2.SetActive(true);
-            switch (tabTrait3)
+            print("Table2 = " + tableTrait2);
+            tableTraitObj2.SetActive(true);
+            switch (tableTrait3)
             {
                 case 1:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal1;
                     break;
                 case 2:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal2;
                     break;
                 case 3:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal3;
                     break;
                 case 4:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal4;
                     break;
                 case 5:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal5;
                     break;
                 case 6:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal6;
                     break;
 
             }
-            tableTrait3.SetActive(true);
-            switch (tabTrait4)
+            print("Table3 = " + tableTrait3);
+            tableTraitObj3.SetActive(true);
+            switch (tableTrait4)
             {
                 case 1:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal1;
                     break;
                 case 2:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal2;
                     break;
                 case 3:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal3;
                     break;
                 case 4:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal4;
                     break;
                 case 5:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal5;
                     break;
                 case 6:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal6;
                     break;
 
             }
-            tableTrait4.SetActive(true);
+            print("Table4 = " + tableTrait4);
+            tableTraitObj4.SetActive(true);
+
+            // CROSS TRAITS
+            switch (crossTraits[0,0])
+            {
+                case 1:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal1;
+                    break;
+                case 2:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal2;
+                    break;
+                case 3:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal3;
+                    break;
+                case 4:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal4;
+                    break;
+                case 5:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal5;
+                    break;
+                case 6:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal6;
+                    break;
+
+            }
+            print("Cross00 = " + crossTraits[0, 0]);
+            crossObj00.SetActive(true);
+            switch (crossTraits[0, 1])
+            {
+                case 1:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal1;
+                    break;
+                case 2:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal2;
+                    break;
+                case 3:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal3;
+                    break;
+                case 4:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal4;
+                    break;
+                case 5:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal5;
+                    break;
+                case 6:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal6;
+                    break;
+
+            }
+            print("Cross01 = " + crossTraits[0, 1]);
+            crossObj01.SetActive(true);
+            switch (crossTraits[1, 0])
+            {
+                case 1:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal1;
+                    break;
+                case 2:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal2;
+                    break;
+                case 3:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal3;
+                    break;
+                case 4:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal4;
+                    break;
+                case 5:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal5;
+                    break;
+                case 6:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal6;
+                    break;
+
+            }
+            print("Cross10 = " + crossTraits[1, 0]);
+            crossObj10.SetActive(true);
+            switch (crossTraits[1, 1])
+            {
+                case 1:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal1;
+                    break;
+                case 2:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal2;
+                    break;
+                case 3:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal3;
+                    break;
+                case 4:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal4;
+                    break;
+                case 5:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal5;
+                    break;
+                case 6:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal6;
+                    break;
+
+            }
+            print("Cross11 = " + crossTraits[1, 1]);
+            crossObj11.SetActive(true);
         }
         else if (traitCounter == 1)
         {
-            switch (tabTrait1)
+            // TABLE TRAITS
+            switch (tableTrait1)
             {
                 case 1:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem1;
                     break;
                 case 2:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem2;
                     break;
                 case 3:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem3;
                     break;
                 case 4:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem4;
                     break;
                 case 5:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem5;
                     break;
                 case 6:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem6;
                     break;
 
             }
-            switch (tabTrait2)
+            switch (tableTrait2)
             {
                 case 1:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem1;
                     break;
                 case 2:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem2;
                     break;
                 case 3:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem3;
                     break;
                 case 4:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem4;
                     break;
                 case 5:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem5;
                     break;
                 case 6:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem6;
                     break;
 
             }
-            switch (tabTrait3)
+            switch (tableTrait3)
             {
                 case 1:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem1;
                     break;
                 case 2:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem2;
                     break;
                 case 3:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem3;
                     break;
                 case 4:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem4;
                     break;
                 case 5:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem5;
                     break;
                 case 6:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem6;
                     break;
 
             }
-            switch (tabTrait4)
+            switch (tableTrait4)
             {
                 case 1:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem1;
                     break;
                 case 2:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem2;
                     break;
                 case 3:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem3;
                     break;
                 case 4:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem4;
                     break;
                 case 5:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem5;
                     break;
                 case 6:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem6;
                     break;
 
             }
+
+            // CROSS TRAITS
+            switch (crossTraits[0, 0])
+            {
+                case 1:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem1;
+                    break;
+                case 2:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem2;
+                    break;
+                case 3:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem3;
+                    break;
+                case 4:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem4;
+                    break;
+                case 5:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem5;
+                    break;
+                case 6:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem6;
+                    break;
+
+            }
+            crossObj00.SetActive(true);
+            switch (crossTraits[0, 1])
+            {
+                case 1:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem1;
+                    break;
+                case 2:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem2;
+                    break;
+                case 3:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem3;
+                    break;
+                case 4:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem4;
+                    break;
+                case 5:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem5;
+                    break;
+                case 6:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem6;
+                    break;
+
+            }
+            crossObj01.SetActive(true);
+            switch (crossTraits[1, 0])
+            {
+                case 1:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem1;
+                    break;
+                case 2:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem2;
+                    break;
+                case 3:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem3;
+                    break;
+                case 4:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem4;
+                    break;
+                case 5:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem5;
+                    break;
+                case 6:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem6;
+                    break;
+
+            }
+            crossObj00.SetActive(true);
+            switch (crossTraits[1, 1])
+            {
+                case 1:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem1;
+                    break;
+                case 2:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem2;
+                    break;
+                case 3:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem3;
+                    break;
+                case 4:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem4;
+                    break;
+                case 5:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem5;
+                    break;
+                case 6:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem6;
+                    break;
+
+            }
+            crossObj11.SetActive(true);
         }
         else if (traitCounter == 2)
         {
-            switch (tabTrait1)
+            // TABLE TRAITS
+            switch (tableTrait1)
             {
                 case 1:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn1;
                     break;
                 case 2:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn2;
                     break;
                 case 3:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn3;
                     break;
                 case 4:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn4;
                     break;
                 case 5:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn5;
                     break;
                 case 6:
-                    tableTrait1.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn6;
                     break;
 
             }
-            switch (tabTrait2)
+            switch (tableTrait2)
             {
                 case 1:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn1;
                     break;
                 case 2:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn2;
                     break;
                 case 3:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn3;
                     break;
                 case 4:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn4;
                     break;
                 case 5:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn5;
                     break;
                 case 6:
-                    tableTrait2.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn6;
                     break;
 
             }
-            switch (tabTrait3)
+            switch (tableTrait3)
             {
                 case 1:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn1;
                     break;
                 case 2:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn2;
                     break;
                 case 3:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn3;
                     break;
                 case 4:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn4;
                     break;
                 case 5:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn5;
                     break;
                 case 6:
-                    tableTrait3.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn6;
                     break;
 
             }
-            switch (tabTrait4)
+            switch (tableTrait4)
             {
                 case 1:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn1;
                     break;
                 case 2:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn2;
                     break;
                 case 3:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn3;
                     break;
                 case 4:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn4;
                     break;
                 case 5:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn5;
                     break;
                 case 6:
-                    tableTrait4.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn6;
                     break;
 
             }
-            
+
+            // CROSS TRAITS
+            switch (crossTraits[0, 0])
+            {
+                case 1:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    break;
+                case 2:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    break;
+                case 3:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    break;
+                case 4:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    break;
+                case 5:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    break;
+                case 6:
+                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    break;
+
+            }
+            crossObj00.SetActive(true);
+            switch (crossTraits[0, 1])
+            {
+                case 1:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    break;
+                case 2:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    break;
+                case 3:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    break;
+                case 4:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    break;
+                case 5:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    break;
+                case 6:
+                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    break;
+
+            }
+            crossObj01.SetActive(true);
+            switch (crossTraits[1, 0])
+            {
+                case 1:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    break;
+                case 2:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    break;
+                case 3:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    break;
+                case 4:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    break;
+                case 5:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    break;
+                case 6:
+                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    break;
+
+            }
+            crossObj00.SetActive(true);
+            switch (crossTraits[1, 1])
+            {
+                case 1:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    break;
+                case 2:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    break;
+                case 3:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    break;
+                case 4:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    break;
+                case 5:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    break;
+                case 6:
+                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    break;
+
+            }
+            crossObj11.SetActive(true);
         }
 
         StartCoreGraphic();

@@ -19,6 +19,8 @@ public class BreedingTableBehavior : MonoBehaviour
     public GameObject flowerPrefab;
     public GameObject breedGraphic;
 
+    private BreedGraphicBehavior bgb;
+
     public GameObject pod1;
 
     private Punnett square;
@@ -33,6 +35,7 @@ public class BreedingTableBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bgb = breedGraphic.GetComponent<BreedGraphicBehavior>();
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
         collectText.text = "Go Outside to the Left and Collect traits!";
         
@@ -46,6 +49,9 @@ public class BreedingTableBehavior : MonoBehaviour
         int stem = square.RunSquare(stemTraits, stemTraits2);
         int thorns = square.RunSquare(thornsTraits, thornsTraits2);
         int petal = square.RunSquare(petalTraits, petalTraits2);
+
+        breedGraphic.SetActive(true);
+        bgb.StartGraphic(petal, stem, thorns);
 
         GameObject flower = Instantiate(flowerPrefab, transform);
         flower.transform.localPosition = Vector3.down * 2;
@@ -61,7 +67,7 @@ public class BreedingTableBehavior : MonoBehaviour
 
         //pod1.GetComponent<PodBehavior>().BreedGraphic();
 
-        returnButton.SetActive(true);
+        //returnButton.SetActive(true);
     }
 
 
