@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class BreedGraphicBehavior : MonoBehaviour
 {
+
+    private Color32 chosen = new Color32(255, 0, 0, 100);
     public bool manualStart = false;
     private int counter = 0;
-    private bool start = false;
+    //private bool start = false;
 
     private int traitCounter = 0;
-    private bool traitsInPlace = false;
-    private bool traitsSplit = false;
+    //private bool traitsInPlace = false;
+    //private bool traitsSplit = false;
 
     public GameObject tableTraits;
     public Text collectText;
@@ -75,7 +77,10 @@ public class BreedGraphicBehavior : MonoBehaviour
     private int outputPetal;
     private int outputStem;
     private int outputThorn;
+    private int currentTraitOutput;
 
+    private int lastChosen = 0;
+    private int finalTraitNum = -1;
     private int graphicCounter = 0;
     // Start is called before the first frame update
     void Start()
@@ -110,8 +115,8 @@ public class BreedGraphicBehavior : MonoBehaviour
         SplitTraits();
         gameObject.SetActive(true);
         graphicCounter = 0;
-        traitsInPlace = false;
-        traitsSplit = false;        
+        //traitsInPlace = false;
+        //traitsSplit = false;        
     }
     public void StartGraphic()
     {
@@ -120,8 +125,8 @@ public class BreedGraphicBehavior : MonoBehaviour
         SplitTraits();
         gameObject.SetActive(true);
         graphicCounter = 0;
-        traitsInPlace = false;
-        traitsSplit = false;
+        //traitsInPlace = false;
+        //traitsSplit = false;
     }
     void StartCoreGraphic()
     {
@@ -130,25 +135,25 @@ public class BreedGraphicBehavior : MonoBehaviour
 
     IEnumerator PlayGraphic()
     {
-        //if (!traitsSplit)
-       // {
-         //   SplitTraits();
-         //   traitsSplit = true;
-        //}
-        //while (!traitsInPlace)
-        //{
-
-        //    yield return 0;
-        //}
-        while (graphicCounter < 8)
+        float waitTime = .5f;
+        while (graphicCounter < 10)
         {
             graphicCounter++;
             ChangeSquare();
-            yield return new WaitForSeconds(.5f);
-        }       
+            waitTime -= graphicCounter * .006f;
+            yield return new WaitForSeconds(waitTime);
+        }
+        if (graphicCounter == 10)
+        {
+            finalTraitNum = FindCorrectTrait();
+            ShowFinalTrait(finalTraitNum);
+            graphicCounter++;
+            yield return new WaitForSeconds(3f);
+        }
+        traitCounter++;
         if (traitCounter < 3)
         {
-            traitCounter++;
+            waitTime = .5f;
             graphicCounter = 0;
             SplitTraits();
         }
@@ -162,33 +167,111 @@ public class BreedGraphicBehavior : MonoBehaviour
 
     void ChangeSquare()
     {
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(1, 5);
+        while (rand == lastChosen)
+        {
+            rand = Random.Range(1, 5);
+        }
         switch (rand)
         {
-            case 0:
-                topLeftImage.color = Color.red;
-                topRightImage.color = Color.clear;
-                botLeftImage.color = Color.clear;
-                botRightImage.color = Color.clear;
-                break;
             case 1:
-                topLeftImage.color = Color.clear;
-                topRightImage.color = Color.red;
+                topLeftImage.color = chosen;
+                topRightImage.color = Color.clear;
                 botLeftImage.color = Color.clear;
                 botRightImage.color = Color.clear;
                 break;
             case 2:
                 topLeftImage.color = Color.clear;
-                topRightImage.color = Color.clear;
-                botLeftImage.color = Color.red;
+                topRightImage.color = chosen;
+                botLeftImage.color = Color.clear;
                 botRightImage.color = Color.clear;
                 break;
             case 3:
                 topLeftImage.color = Color.clear;
                 topRightImage.color = Color.clear;
-                botLeftImage.color = Color.clear;
-                botRightImage.color = Color.red;
+                botLeftImage.color = chosen;
+                botRightImage.color = Color.clear;
                 break;
+            case 4:
+                topLeftImage.color = Color.clear;
+                topRightImage.color = Color.clear;
+                botLeftImage.color = Color.clear;
+                botRightImage.color = chosen;
+                break;
+        }
+        print("trait num: " +  traitCounter +"change number: " + graphicCounter);
+        lastChosen = rand;
+    }
+
+    void ShowFinalTrait(int traitNum)
+    {
+        print("Showing Final");
+        switch (traitNum)
+        {
+            case 1:
+                topLeftImage.color = chosen;
+                topRightImage.color = Color.clear;
+                botLeftImage.color = Color.clear;
+                botRightImage.color = Color.clear;
+                break;
+            case 2:
+                topLeftImage.color = Color.clear;
+                topRightImage.color = chosen;
+                botLeftImage.color = Color.clear;
+                botRightImage.color = Color.clear;
+                break;
+            case 3:
+                topLeftImage.color = Color.clear;
+                topRightImage.color = Color.clear;
+                botLeftImage.color = chosen;
+                botRightImage.color = Color.clear;
+                break;
+            case 4:
+                topLeftImage.color = Color.clear;
+                topRightImage.color = Color.clear;
+                botLeftImage.color = Color.clear;
+                botRightImage.color = chosen;
+                break;
+        }
+    }
+    void StartNextTrait()
+    {
+        print("Starting Next");
+        graphicCounter++;
+    }
+    int FindCorrectTrait()
+    {
+        if (traitCounter == 0)
+        {
+            currentTraitOutput = outputPetal;
+        }
+        else if (traitCounter == 1)
+        {
+            currentTraitOutput = outputStem;
+        }
+        else if (traitCounter == 2)
+        {
+            currentTraitOutput = outputThorn;
+        }
+        if (tableTrait1 == currentTraitOutput)
+        {
+            return 1;
+        }
+        else if (tableTrait2 == currentTraitOutput)
+        {
+            return 2;
+        }
+        else if (tableTrait3 == currentTraitOutput)
+        {
+            return 3;
+        }
+        else if (tableTrait3 == currentTraitOutput)
+        {
+            return 4;
+        }
+        else
+        {
+            return -1;
         }
     }
     void ChangeTraits()
@@ -498,7 +581,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Table1 = " + tableTrait1);
+            //print("Table1 = " + tableTrait1);
             tableTraitObj1.SetActive(true);
             switch (tableTrait2)
             {
@@ -522,7 +605,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Table2 = " + tableTrait2);
+            //print("Table2 = " + tableTrait2);
             tableTraitObj2.SetActive(true);
             switch (tableTrait3)
             {
@@ -546,7 +629,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Table3 = " + tableTrait3);
+            //print("Table3 = " + tableTrait3);
             tableTraitObj3.SetActive(true);
             switch (tableTrait4)
             {
@@ -570,7 +653,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Table4 = " + tableTrait4);
+            //print("Table4 = " + tableTrait4);
             tableTraitObj4.SetActive(true);
 
             // CROSS TRAITS
@@ -596,7 +679,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Cross00 = " + crossTraits[0, 0]);
+            //print("Cross00 = " + crossTraits[0, 0]);
             crossObj00.SetActive(true);
             switch (crossTraits[0, 1])
             {
@@ -620,7 +703,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Cross01 = " + crossTraits[0, 1]);
+            //print("Cross01 = " + crossTraits[0, 1]);
             crossObj01.SetActive(true);
             switch (crossTraits[1, 0])
             {
@@ -644,7 +727,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Cross10 = " + crossTraits[1, 0]);
+            //print("Cross10 = " + crossTraits[1, 0]);
             crossObj10.SetActive(true);
             switch (crossTraits[1, 1])
             {
@@ -668,7 +751,7 @@ public class BreedGraphicBehavior : MonoBehaviour
                     break;
 
             }
-            print("Cross11 = " + crossTraits[1, 1]);
+            //print("Cross11 = " + crossTraits[1, 1]);
             crossObj11.SetActive(true);
         }
         else if (traitCounter == 1)

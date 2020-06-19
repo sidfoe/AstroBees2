@@ -100,7 +100,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (GameManager.tracker == 1)
         {
             currentSprite = flower.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-            print(currentSprite.name);
+            //print(currentSprite.name);
             currentTrait = flower.GetComponent<FlowerBehaviour>().petalTraits;
         }
         else if (GameManager.tracker == 2)
