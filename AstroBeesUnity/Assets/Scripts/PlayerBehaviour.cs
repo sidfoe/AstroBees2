@@ -89,6 +89,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
+            FindObjectOfType<AudioManager>().Play("BeeMove");
         }
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
@@ -100,17 +101,20 @@ public class PlayerBehaviour : MonoBehaviour
             currentSprite = flower.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
             print(currentSprite.name);
             currentTrait = flower.GetComponent<FlowerBehaviour>().petalTraits;
+            FindObjectOfType<AudioManager>().Play("SelectGenes");
         }
         else if (GameManager.tracker == 2)
         {
             currentSprite = flower.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite;
 
             currentTrait = flower.GetComponent<FlowerBehaviour>().stemTraits;
+            FindObjectOfType<AudioManager>().Play("SelectGenes");
         }
         else 
         {
             currentSprite = flower.transform.GetChild(2).GetComponent<SpriteRenderer>().sprite;
             currentTrait = flower.GetComponent<FlowerBehaviour>().thornsTraits;
+            FindObjectOfType<AudioManager>().Play("SelectGenes");
         }
 
         lastFlowerPS.Play();
@@ -233,6 +237,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             canOpen = true;
             onFlower = true;
+            FindObjectOfType<AudioManager>().Play("OpenFlower");
             obj = col.gameObject;
             currentPanel = grabGenesPanel;
             flower = col.gameObject;
