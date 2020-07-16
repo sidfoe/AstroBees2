@@ -24,10 +24,14 @@ public class BreedingTableBehavior : MonoBehaviour
     public GameObject pod1;
 
     private Punnett square;
-
+    private FlowerBehaviour fb;
     public GameObject returnButton;
 
     private bool runOnce = false;
+
+    private int finalPetal;
+    private int finalStem;
+    private int finalThorns;
 
     //private GameObject pod1;
     //private GameObject pod2;
@@ -46,21 +50,14 @@ public class BreedingTableBehavior : MonoBehaviour
     public void StartSquare()
     {
         //int color = square.RunSquare(colorTraits, colorTraits2);
-        int stem = square.RunSquare(stemTraits, stemTraits2);
-        int thorns = square.RunSquare(thornsTraits, thornsTraits2);
-        int petal = square.RunSquare(petalTraits, petalTraits2);
+        finalStem = square.RunSquare(stemTraits, stemTraits2);
+        finalThorns = square.RunSquare(thornsTraits, thornsTraits2);
+        finalPetal = square.RunSquare(petalTraits, petalTraits2);
 
         breedGraphic.SetActive(true);
-        bgb.StartGraphic(petal, stem, thorns);
+        bgb.StartGraphic(finalPetal, finalStem, finalThorns);
 
-        GameObject flower = Instantiate(flowerPrefab, transform);
-        flower.transform.localPosition = Vector3.down * 2;
 
-        //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
-        flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
-        flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
-        flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
-        flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
 
         //breedGraphic.SetActive(true);
         //breedGraphic.GetComponent<BreedGraphicBehavior>().start = true;
@@ -70,6 +67,18 @@ public class BreedingTableBehavior : MonoBehaviour
         //returnButton.SetActive(true);
     }
 
+
+    public void SpawnFinalFlower()
+    {
+        GameObject flower = Instantiate(flowerPrefab, transform);
+        flower.transform.localPosition = Vector3.down * 2;
+        fb = flower.GetComponent<FlowerBehaviour>();
+        //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
+        fb.stemTraits = finalStem;
+        fb.thornsTraits = finalThorns;
+        fb.petalTraits = finalPetal;
+        fb.SpawnedInPot();
+    }
 
     public void GetTraits(int podNum, int traitType, int trait)
     {
