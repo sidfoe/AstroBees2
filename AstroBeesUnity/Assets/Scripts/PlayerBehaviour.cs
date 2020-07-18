@@ -69,6 +69,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Movement();
         OpenPanel();
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, transform.position - mousePos);
     }
 
     void FixedUpdate()
