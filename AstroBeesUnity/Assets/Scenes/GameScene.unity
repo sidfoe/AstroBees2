@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440ed0e80bd18fd499e9d6259f43ce82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.32
   startScale: {x: 0.3, y: 0.3, z: 1}
   endScale: {x: 0.695, y: 0.695, z: 1}
 --- !u!1 &63806559 stripped
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440ed0e80bd18fd499e9d6259f43ce82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.32
   startScale: {x: 0.3, y: 0.3, z: 1}
   endScale: {x: 0.695, y: 0.695, z: 1}
 --- !u!1 &379686119
@@ -3999,7 +3999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440ed0e80bd18fd499e9d6259f43ce82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.32
   startScale: {x: 0.3, y: 0.3, z: 1}
   endScale: {x: 0.695, y: 0.695, z: 1}
 --- !u!1 &1167545803
@@ -8062,7 +8062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440ed0e80bd18fd499e9d6259f43ce82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.32
   startScale: {x: 0.3, y: 0.3, z: 1}
   endScale: {x: 0.695, y: 0.695, z: 1}
 --- !u!1 &2077861654
