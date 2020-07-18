@@ -1,16 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:AstroBeesUnity/Assets/ThirdParty/PlayServicesResolver.meta
-guid: 333d24e71d12446ba5c77815e64b0ca8
-folderAsset: yes
-timeCreated: 1448926447
-licenseType: Pro
-DefaultImporter:
-=======
-guid: a8822040eb438d744b429f66372c965e
+guid: 91a29d8190edd6c42b17e87e0309246d
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 9100000
->>>>>>> Sydney:AstroBeesUnity/Assets/Animation/BreedingTable/Breeding Table.controller.meta
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

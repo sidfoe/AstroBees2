@@ -19,9 +19,19 @@ public class BreedingTableBehavior : MonoBehaviour
     public GameObject flowerPrefab;
     public GameObject breedGraphic;
 
+    private BreedGraphicBehavior bgb;
+
     public GameObject pod1;
 
     private Punnett square;
+    private FlowerBehaviour fb;
+    public GameObject returnButton;
+
+    private bool runOnce = false;
+
+    private int finalPetal;
+    private int finalStem;
+    private int finalThorns;
 
     //private GameObject pod1;
     //private GameObject pod2;
@@ -29,9 +39,10 @@ public class BreedingTableBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bgb = breedGraphic.GetComponent<BreedGraphicBehavior>();
         square = GameObject.FindGameObjectWithTag("punnett").GetComponent<Punnett>();
-        collectText.text = "Collect your first petal gene!";
-
+        collectText.text = "Go Outside to the Left and Collect traits!";
+        
         //pod1 = GameObject.Find("Pod1");
         //pod2 = GameObject.Find("Pod2");
     }
@@ -39,25 +50,35 @@ public class BreedingTableBehavior : MonoBehaviour
     public void StartSquare()
     {
         //int color = square.RunSquare(colorTraits, colorTraits2);
-        //int stem = square.RunSquare(stemTraits, stemTraits2);
-        //int thorns = square.RunSquare(thornsTraits, thornsTraits2);
-        //int petal = square.RunSquare(petalTraits, petalTraits2);
-
-        //GameObject flower = Instantiate(flowerPrefab, transform);
-        //flower.transform.localPosition = Vector3.zero;
-
-        //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
-        //flower.GetComponent<FlowerBehaviour>().stemTraits = stem;
-        //flower.GetComponent<FlowerBehaviour>().thornsTraits = thorns;
-        //flower.GetComponent<FlowerBehaviour>().petalTraits = petal;
-        //flower.GetComponent<FlowerBehaviour>().SpawnedInPot();
+        finalStem = square.RunSquare(stemTraits, stemTraits2);
+        finalThorns = square.RunSquare(thornsTraits, thornsTraits2);
+        finalPetal = square.RunSquare(petalTraits, petalTraits2);
 
         breedGraphic.SetActive(true);
-        breedGraphic.GetComponent<BreedGraphicBehavior>().start = true;
+        bgb.StartGraphic(finalPetal, finalStem, finalThorns);
 
-        pod1.GetComponent<PodBehavior>().BreedGraphic();
+
+
+        //breedGraphic.SetActive(true);
+        //breedGraphic.GetComponent<BreedGraphicBehavior>().start = true;
+
+        //pod1.GetComponent<PodBehavior>().BreedGraphic();
+
+        //returnButton.SetActive(true);
     }
 
+
+    public void SpawnFinalFlower()
+    {
+        GameObject flower = Instantiate(flowerPrefab, transform);
+        flower.transform.localPosition = Vector3.down * 2;
+        fb = flower.GetComponent<FlowerBehaviour>();
+        //flower.GetComponent<FlowerBehaviour>().colorTraits = color;
+        fb.stemTraits = finalStem;
+        fb.thornsTraits = finalThorns;
+        fb.petalTraits = finalPetal;
+        fb.SpawnedInPot();
+    }
 
     public void GetTraits(int podNum, int traitType, int trait)
     {
@@ -116,13 +137,17 @@ public class BreedingTableBehavior : MonoBehaviour
         else if (thornsTraits != 0 && thornsTraits2 != 0 && GameManager.tracker == 3)
         {
             GameManager.tracker++;
-            collectText.text = "Breed your flower!";
+            collectText.text = "Go back Inside and Breed your flower!";
         }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if(FindObjectOfType<PlayerBehaviour>().goneOutside == true && runOnce == false)
+        {
+            runOnce = true;
+            collectText.text = "Collect your first petal gene!";
+        }
     }
 
 }

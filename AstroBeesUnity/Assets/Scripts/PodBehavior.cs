@@ -16,8 +16,8 @@ public class PodBehavior : MonoBehaviour
     public GameObject nextPod;
     private GameObject breedingTable;
 
-    private int baseTrait1;
-    private int baseTrait2;
+    //private int baseTrait1;
+    //private int baseTrait2;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +49,8 @@ public class PodBehavior : MonoBehaviour
         // Find what trait number means for trait sprite
         if (trait == 1)
         {
-            baseTrait1 = 1;
-            baseTrait2 = 1;
+            //baseTrait1 = 1;
+            //baseTrait2 = 1;
         }
     }
 }

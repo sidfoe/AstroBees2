@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -310,6 +311,11 @@ public class GameManager : MonoBehaviour
         }
         rand.Reset();
         StartCoroutine("WaitTime");
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("StartingMenu");
     }
 
     IEnumerator WaitTime()
