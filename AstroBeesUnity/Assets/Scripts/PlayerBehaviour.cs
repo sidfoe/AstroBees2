@@ -53,6 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject obj;
 
     private int currentArea;
+    private BreedingTableBehavior btb;
 
     private ParticleSystem lastFlowerPS; //the flower particle system, when collected it plays until we have an animation or in addition to the animation
 
@@ -60,6 +61,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start()
     {
+        btb = GameObject.Find("Breeding Table").GetComponent<BreedingTableBehavior>();
         pod = firstPod;
         currentPanel = grabGenesPanel;
         target = transform.position;
@@ -253,10 +255,13 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (col.gameObject == breedingTable)
         {
-            canOpen = true;
-            onTable = true;
-            obj = col.gameObject;
-            currentPanel = breedGenesPanel;
+            if (btb.CheckIfCanBreed())
+            {
+                canOpen = true;
+                onTable = true;
+                obj = col.gameObject;
+                currentPanel = breedGenesPanel;
+            }
         }
 
         if (col.gameObject.name == "SwitchAreaButton")

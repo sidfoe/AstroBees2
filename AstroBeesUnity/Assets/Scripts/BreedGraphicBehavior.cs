@@ -110,6 +110,20 @@ public class BreedGraphicBehavior : MonoBehaviour
     private int lastChosen = 0;
     private int finalTraitNum = -1;
     private int graphicCounter = 0;
+
+
+
+    private SpriteRenderer crossObj00SR;
+    private SpriteRenderer crossObj01SR;
+    private SpriteRenderer crossObj10SR;
+    private SpriteRenderer crossObj11SR;
+
+    private SpriteRenderer tableTraitObj1SR;
+    private SpriteRenderer tableTraitObj2SR;
+    private SpriteRenderer tableTraitObj3SR;
+    private SpriteRenderer tableTraitObj4SR;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,6 +139,17 @@ public class BreedGraphicBehavior : MonoBehaviour
         crossObj01Movement = crossObj01.GetComponent<CrossTraitMovement>();
         crossObj10Movement = crossObj10.GetComponent<CrossTraitMovement>();
         crossObj11Movement = crossObj11.GetComponent<CrossTraitMovement>();
+
+        crossObj00SR = crossObj00.GetComponent<SpriteRenderer>();
+        crossObj01SR = crossObj01.GetComponent<SpriteRenderer>();
+        crossObj10SR = crossObj10.GetComponent<SpriteRenderer>();
+        crossObj11SR = crossObj11.GetComponent<SpriteRenderer>();
+
+        tableTraitObj1SR = tableTraitObj1.GetComponent<SpriteRenderer>();
+        tableTraitObj2SR = tableTraitObj2.GetComponent<SpriteRenderer>();
+        tableTraitObj3SR = tableTraitObj3.GetComponent<SpriteRenderer>();
+        tableTraitObj4SR = tableTraitObj4.GetComponent<SpriteRenderer>();
+
 
         btb = GameObject.Find("Breeding Table").GetComponent<BreedingTableBehavior>();
         ChangeTraits();   
@@ -420,22 +445,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 0])
             {
                 case 1:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal1;
+                    crossObj00SR.sprite = petal1;
                     break;
                 case 2:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal2;
+                    crossObj00SR.sprite = petal2;
                     break;
                 case 3:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal3;
+                    crossObj00SR.sprite = petal3;
                     break;
                 case 4:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal4;
+                    crossObj00SR.sprite = petal4;
                     break;
                 case 5:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal5;
+                    crossObj00SR.sprite = petal5;
                     break;
                 case 6:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = petal6;
+                    crossObj00SR.sprite = petal6;
                     break;
 
             }
@@ -444,22 +469,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 1])
             {
                 case 1:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal1;
+                    crossObj01SR.sprite = petal1;
                     break;
                 case 2:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal2;
+                    crossObj01SR.sprite = petal2;
                     break;
                 case 3:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal3;
+                    crossObj01SR.sprite = petal3;
                     break;
                 case 4:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal4;
+                    crossObj01SR.sprite = petal4;
                     break;
                 case 5:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal5;
+                    crossObj01SR.sprite = petal5;
                     break;
                 case 6:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = petal6;
+                    crossObj01SR.sprite = petal6;
                     break;
 
             }
@@ -468,22 +493,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 0])
             {
                 case 1:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal1;
+                    crossObj10SR.sprite = petal1;
                     break;
                 case 2:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal2;
+                    crossObj10SR.sprite = petal2;
                     break;
                 case 3:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal3;
+                    crossObj10SR.sprite = petal3;
                     break;
                 case 4:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal4;
+                    crossObj10SR.sprite = petal4;
                     break;
                 case 5:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal5;
+                    crossObj10SR.sprite = petal5;
                     break;
                 case 6:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = petal6;
+                    crossObj10SR.sprite = petal6;
                     break;
 
             }
@@ -492,22 +517,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 1])
             {
                 case 1:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal1;
+                    crossObj11SR.sprite = petal1;
                     break;
                 case 2:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal2;
+                    crossObj11SR.sprite = petal2;
                     break;
                 case 3:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal3;
+                    crossObj11SR.sprite = petal3;
                     break;
                 case 4:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal4;
+                    crossObj11SR.sprite = petal4;
                     break;
                 case 5:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal5;
+                    crossObj11SR.sprite = petal5;
                     break;
                 case 6:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = petal6;
+                    crossObj11SR.sprite = petal6;
                     break;
 
             }
@@ -520,22 +545,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 0])
             {
                 case 1:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem1;
+                    crossObj00SR.sprite = stem1;
                     break;
                 case 2:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem2;
+                    crossObj00SR.sprite = stem2;
                     break;
                 case 3:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem3;
+                    crossObj00SR.sprite = stem3;
                     break;
                 case 4:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem4;
+                    crossObj00SR.sprite = stem4;
                     break;
                 case 5:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem5;
+                    crossObj00SR.sprite = stem5;
                     break;
                 case 6:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = stem6;
+                    crossObj00SR.sprite = stem6;
                     break;
 
             }
@@ -543,22 +568,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 1])
             {
                 case 1:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem1;
+                    crossObj01SR.sprite = stem1;
                     break;
                 case 2:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem2;
+                    crossObj01SR.sprite = stem2;
                     break;
                 case 3:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem3;
+                    crossObj01SR.sprite = stem3;
                     break;
                 case 4:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem4;
+                    crossObj01SR.sprite = stem4;
                     break;
                 case 5:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem5;
+                    crossObj01SR.sprite = stem5;
                     break;
                 case 6:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = stem6;
+                    crossObj01SR.sprite = stem6;
                     break;
 
             }
@@ -566,22 +591,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 0])
             {
                 case 1:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem1;
+                    crossObj10SR.sprite = stem1;
                     break;
                 case 2:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem2;
+                    crossObj10SR.sprite = stem2;
                     break;
                 case 3:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem3;
+                    crossObj10SR.sprite = stem3;
                     break;
                 case 4:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem4;
+                    crossObj10SR.sprite = stem4;
                     break;
                 case 5:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem5;
+                    crossObj10SR.sprite = stem5;
                     break;
                 case 6:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = stem6;
+                    crossObj10SR.sprite = stem6;
                     break;
 
             }
@@ -589,22 +614,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 1])
             {
                 case 1:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem1;
+                    crossObj11SR.sprite = stem1;
                     break;
                 case 2:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem2;
+                    crossObj11SR.sprite = stem2;
                     break;
                 case 3:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem3;
+                    crossObj11SR.sprite = stem3;
                     break;
                 case 4:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem4;
+                    crossObj11SR.sprite = stem4;
                     break;
                 case 5:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem5;
+                    crossObj11SR.sprite = stem5;
                     break;
                 case 6:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = stem6;
+                    crossObj11SR.sprite = stem6;
                     break;
 
             }
@@ -616,22 +641,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 0])
             {
                 case 1:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    crossObj00SR.sprite = thorn1;
                     break;
                 case 2:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    crossObj00SR.sprite = thorn2;
                     break;
                 case 3:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    crossObj00SR.sprite = thorn3;
                     break;
                 case 4:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    crossObj00SR.sprite = thorn4;
                     break;
                 case 5:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    crossObj00SR.sprite = thorn5;
                     break;
                 case 6:
-                    crossObj00.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    crossObj00SR.sprite = thorn6;
                     break;
 
             }
@@ -639,22 +664,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[0, 1])
             {
                 case 1:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    crossObj01SR.sprite = thorn1;
                     break;
                 case 2:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    crossObj01SR.sprite = thorn2;
                     break;
                 case 3:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    crossObj01SR.sprite = thorn3;
                     break;
                 case 4:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    crossObj01SR.sprite = thorn4;
                     break;
                 case 5:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    crossObj01SR.sprite = thorn5;
                     break;
                 case 6:
-                    crossObj01.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    crossObj01SR.sprite = thorn6;
                     break;
 
             }
@@ -662,22 +687,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 0])
             {
                 case 1:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    crossObj10SR.sprite = thorn1;
                     break;
                 case 2:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    crossObj10SR.sprite = thorn2;
                     break;
                 case 3:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    crossObj10SR.sprite = thorn3;
                     break;
                 case 4:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    crossObj10SR.sprite = thorn4;
                     break;
                 case 5:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    crossObj10SR.sprite = thorn5;
                     break;
                 case 6:
-                    crossObj10.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    crossObj10SR.sprite = thorn6;
                     break;
 
             }
@@ -685,22 +710,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (crossTraits[1, 1])
             {
                 case 1:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    crossObj11SR.sprite = thorn1;
                     break;
                 case 2:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    crossObj11SR.sprite = thorn2;
                     break;
                 case 3:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    crossObj11SR.sprite = thorn3;
                     break;
                 case 4:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    crossObj11SR.sprite = thorn4;
                     break;
                 case 5:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    crossObj11SR.sprite = thorn5;
                     break;
                 case 6:
-                    crossObj11.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    crossObj11SR.sprite = thorn6;
                     break;
 
             }
@@ -918,46 +943,46 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait1)
             {              
                 case 1:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj1SR.sprite = petal1;
                     break;
                 case 2:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj1SR.sprite = petal2;
                     break;
                 case 3:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj1SR.sprite = petal3;
                     break;
                 case 4:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj1SR.sprite = petal4;
                     break;
                 case 5:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj1SR.sprite = petal5;
                     break;
                 case 6:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj1SR.sprite = petal6;
                     break;
 
             }
-            print("Table1 = " + tableTrait1);
+            //print("Table1 = " + tableTrait1);
             tableTraitObj1.SetActive(true);
             switch (tableTrait2)
             {
                 case 1:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj2SR.sprite = petal1;
                     break;
                 case 2:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj2SR.sprite = petal2;
                     break;
                 case 3:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj2SR.sprite = petal3;
                     break;
                 case 4:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj2SR.sprite = petal4;
                     break;
                 case 5:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj2SR.sprite = petal5;
                     break;
                 case 6:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj2SR.sprite = petal6;
                     break;
 
             }
@@ -966,22 +991,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait3)
             {
                 case 1:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj3SR.sprite = petal1;
                     break;
                 case 2:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj3SR.sprite = petal2;
                     break;
                 case 3:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj3SR.sprite = petal3;
                     break;
                 case 4:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj3SR.sprite = petal4;
                     break;
                 case 5:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj3SR.sprite = petal5;
                     break;
                 case 6:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj3SR.sprite = petal6;
                     break;
 
             }
@@ -990,22 +1015,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait4)
             {
                 case 1:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal1;
+                    tableTraitObj4SR.sprite = petal1;
                     break;
                 case 2:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal2;
+                    tableTraitObj4SR.sprite = petal2;
                     break;
                 case 3:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal3;
+                    tableTraitObj4SR.sprite = petal3;
                     break;
                 case 4:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal4;
+                    tableTraitObj4SR.sprite = petal4;
                     break;
                 case 5:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal5;
+                    tableTraitObj4SR.sprite = petal5;
                     break;
                 case 6:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = petal6;
+                    tableTraitObj4SR.sprite = petal6;
                     break;
 
             }
@@ -1020,22 +1045,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait1)
             {
                 case 1:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj1SR.sprite = stem1;
                     break;
                 case 2:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj1SR.sprite = stem2;
                     break;
                 case 3:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj1SR.sprite = stem3;
                     break;
                 case 4:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj1SR.sprite = stem4;
                     break;
                 case 5:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj1SR.sprite = stem5;
                     break;
                 case 6:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj1SR.sprite = stem6;
                     break;
 
             }
@@ -1043,22 +1068,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait2)
             {
                 case 1:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj2SR.sprite = stem1;
                     break;
                 case 2:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj2SR.sprite = stem2;
                     break;
                 case 3:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj2SR.sprite = stem3;
                     break;
                 case 4:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj2SR.sprite = stem4;
                     break;
                 case 5:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj2SR.sprite = stem5;
                     break;
                 case 6:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj2SR.sprite = stem6;
                     break;
 
             }
@@ -1066,22 +1091,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait3)
             {
                 case 1:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj3SR.sprite = stem1;
                     break;
                 case 2:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj3SR.sprite = stem2;
                     break;
                 case 3:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj3SR.sprite = stem3;
                     break;
                 case 4:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj3SR.sprite = stem4;
                     break;
                 case 5:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj3SR.sprite = stem5;
                     break;
                 case 6:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj3SR.sprite = stem6;
                     break;
 
             }
@@ -1089,22 +1114,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait4)
             {
                 case 1:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem1;
+                    tableTraitObj4SR.sprite = stem1;
                     break;
                 case 2:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem2;
+                    tableTraitObj4SR.sprite = stem2;
                     break;
                 case 3:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem3;
+                    tableTraitObj4SR.sprite = stem3;
                     break;
                 case 4:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem4;
+                    tableTraitObj4SR.sprite = stem4;
                     break;
                 case 5:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem5;
+                    tableTraitObj4SR.sprite = stem5;
                     break;
                 case 6:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = stem6;
+                    tableTraitObj4SR.sprite = stem6;
                     break;
 
             }
@@ -1118,22 +1143,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait1)
             {
                 case 1:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj1SR.sprite = thorn1;
                     break;
                 case 2:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj1SR.sprite = thorn2;
                     break;
                 case 3:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj1SR.sprite = thorn3;
                     break;
                 case 4:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj1SR.sprite = thorn4;
                     break;
                 case 5:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj1SR.sprite = thorn5;
                     break;
                 case 6:
-                    tableTraitObj1.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj1SR.sprite = thorn6;
                     break;
 
             }
@@ -1141,22 +1166,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait2)
             {
                 case 1:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj2SR.sprite = thorn1;
                     break;
                 case 2:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj2SR.sprite = thorn2;
                     break;
                 case 3:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj2SR.sprite = thorn3;
                     break;
                 case 4:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj2SR.sprite = thorn4;
                     break;
                 case 5:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj2SR.sprite = thorn5;
                     break;
                 case 6:
-                    tableTraitObj2.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj2SR.sprite = thorn6;
                     break;
 
             }
@@ -1164,22 +1189,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait3)
             {
                 case 1:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj3SR.sprite = thorn1;
                     break;
                 case 2:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj3SR.sprite = thorn2;
                     break;
                 case 3:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj3SR.sprite = thorn3;
                     break;
                 case 4:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj3SR.sprite = thorn4;
                     break;
                 case 5:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj3SR.sprite = thorn5;
                     break;
                 case 6:
-                    tableTraitObj3.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj3SR.sprite = thorn6;
                     break;
 
             }
@@ -1187,22 +1212,22 @@ public class BreedGraphicBehavior : MonoBehaviour
             switch (tableTrait4)
             {
                 case 1:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn1;
+                    tableTraitObj4SR.sprite = thorn1;
                     break;
                 case 2:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn2;
+                    tableTraitObj4SR.sprite = thorn2;
                     break;
                 case 3:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn3;
+                    tableTraitObj4SR.sprite = thorn3;
                     break;
                 case 4:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn4;
+                    tableTraitObj4SR.sprite = thorn4;
                     break;
                 case 5:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn5;
+                    tableTraitObj4SR.sprite = thorn5;
                     break;
                 case 6:
-                    tableTraitObj4.GetComponent<SpriteRenderer>().sprite = thorn6;
+                    tableTraitObj4SR.sprite = thorn6;
                     break;
 
             }

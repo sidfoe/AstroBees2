@@ -22,12 +22,12 @@ public class BreedingTableBehavior : MonoBehaviour
     private BreedGraphicBehavior bgb;
 
     public GameObject pod1;
-
     private Punnett square;
     private FlowerBehaviour fb;
     public GameObject returnButton;
 
     private bool runOnce = false;
+    private bool canBreed = true;
 
     private int finalPetal;
     private int finalStem;
@@ -54,8 +54,10 @@ public class BreedingTableBehavior : MonoBehaviour
         finalThorns = square.RunSquare(thornsTraits, thornsTraits2);
         finalPetal = square.RunSquare(petalTraits, petalTraits2);
 
+        
         breedGraphic.SetActive(true);
         bgb.StartGraphic(finalPetal, finalStem, finalThorns);
+        canBreed = false;
 
 
 
@@ -78,6 +80,19 @@ public class BreedingTableBehavior : MonoBehaviour
         fb.thornsTraits = finalThorns;
         fb.petalTraits = finalPetal;
         fb.SpawnedInPot();
+    }
+
+    public bool CheckIfCanBreed()
+    {
+        if (GameManager.tracker > 3 && canBreed)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     public void GetTraits(int podNum, int traitType, int trait)

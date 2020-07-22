@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manualStart: 0
-  moveTime: 4.5
+  moveTime: 3.8
   tableTraits: {fileID: 1339595078}
   collectText: {fileID: 352059069}
   graphicPanel: {fileID: 1287260767}
