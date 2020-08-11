@@ -225,7 +225,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d8bd9a6b42bfdf743876de2024ea1c6d, type: 3}
   - {fileID: 21300000, guid: 6f5f0a2756450f94b88d66369f0c8eff, type: 3}
   - {fileID: 21300000, guid: 4930ead50ca8e7249b3ee971f945ecea, type: 3}
-  - {fileID: 21300000, guid: b27b35c79854cdc4481a09dc0e2e909a, type: 3}
+  - {fileID: -1100604333821361281, guid: b27b35c79854cdc4481a09dc0e2e909a, type: 3}
   thorn:
   - {fileID: 21300000, guid: 843235bff0d613e4c8933eef93d29d86, type: 3}
   - {fileID: 21300000, guid: 1b0a2dd14ea05e74b898debd964ab347, type: 3}

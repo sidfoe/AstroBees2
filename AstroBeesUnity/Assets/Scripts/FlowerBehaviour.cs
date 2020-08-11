@@ -27,6 +27,8 @@ public class FlowerBehaviour : MonoBehaviour
     public GameObject tar;
     public bool isTarget = false;
 
+    private Animator anim; // animator for the petal
+
     private void Awake()
     {
         //tar = GameObject.FindGameObjectWithTag("tarImg");
@@ -34,7 +36,7 @@ public class FlowerBehaviour : MonoBehaviour
 
     private void Start()
     {
-        
+        anim = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void LateUpdate()
@@ -48,21 +50,27 @@ public class FlowerBehaviour : MonoBehaviour
             {
                 case 1:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[0];
+                    anim.SetInteger("FlowerNum", 1);
                     break;
                 case 2:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[1];
+                    anim.SetInteger("FlowerNum", 2);
                     break;
                 case 3:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[2];
+                    anim.SetInteger("FlowerNum", 3);
                     break;
                 case 4:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[3];
+                    anim.SetInteger("FlowerNum", 4);
                     break;
                 case 5:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[4];
+                    anim.SetInteger("FlowerNum", 5);
                     break;
                 case 6:
                     gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = petal[5];
+                    anim.SetInteger("FlowerNum", 6);
                     break;
             }
 
